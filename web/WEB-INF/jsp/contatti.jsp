@@ -14,30 +14,36 @@
     <head>
         <c:import url="template/head.jsp"/>
     </head>
-    <body>
-        <header>
+    <body itemscope itemtype="http://schema.org/ContactPage">
+        <header itemscope itemtype="http://schema.org/WPHeader">
             <c:import url="template/menu-nav.jsp"/>
         </header>
         <article class="container-fluid">
             <div class ="row">
                 <div class="col-md-1"></div>
-                <div class="col-md-10"> 
-
-                    <div class="page-header">
-                        <h1>Chi siamo:<small> Damici Ristrutturazioni</small></h1>
+                <div class="col-md-10" itemscope itemtype="http://schema.org/WebPageElement">
+                    <div class="page-header" >
+                        <h1>Contattaci,<small> oppure compila il modulo, ti contatteremo noi.</small></h1>
                     </div>
-                    <p><strong>Damici Ristrutturazioni,</strong> team dinamico con una profonda esperienza professionale nel campo della progettazione e realizzazione di interventi di ristruDamici Ristrutturazionitturazione. Inoltre, realizziamo qualsiasi tipo di intervento che necessita un’impresa edile.<br/> 
-                        La nostra attenzione non si limita all’aspetto estetico ma anche funzionale ed ergonomico.<br/><br/>
-
-                        Il team è formato dalla impresa edile <strong>Damici Iosif Sorin e l’architetto Fabio Lanzoni.</strong><br/>
-                    <strong>Damici Iosif Sorin</strong> si occupa della direzione e della realizzazione dei lavori dei progetti, con il continuo monitoraggio del cantiere per assicurare la fedele esecuzione di quanto progettato 
-                        fornendovi ristrutturazioni chiavi in mano.<br/><br/>
-
-                        <strong>L’arch. Fabio Lanzoni</strong> si occupa della progettazione, dagli aspetti più squisitamente architettonicialla scelta degli elementi d’arredo, fino al design dei componenti più ricercati.<br/><br/>
-
-                        L’unione di queste due professionalità ha dato vita ad una Team in grado di fornire un servizio chiavi in mano, dalla progettazione alla realizzazione.
+                    <p>Contattaci per ottenere un preventivo gratuito per la ristrutturazione o per una consulenza su come ottimizzare il tuo budget.
+                        Se stai pensando di acquistrare un immobile per ristrutturarlo, possiamo anche aiutarti nel valutarne le caratteristiche 
+                        al fine di effettuare il migliore investimento simulando le possibili soluzioni di revisione del layout.
                     </p>
-                    <p><a class="btn btn-primary btn-lg" role="button">Contattaci</a></p>
+                    <div itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/WebPageElement">
+                        <address itemscope itemtype="http://schema.org/Place">
+                            <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                             <span itemprop="name"><strong>Damici Ristrutturazioni</strong><br></span>
+                            Siamo in <span itemprop="streetAddress">Via Ricasoli, 28</span>
+                            - <span itemprop="postalCode">10153</span>
+                            <span itemprop="addressLocality">Torino</span>
+                            (<span itemprop="addressRegion">TO</span>)<br>
+                            
+                            <span itemprop="telephone"><abbr title="Cellulare">Tel:</abbr> 328 586 4500</span>
+                            <span itemprop="email"><a href="mailto:#">damicisorin@ymail.com</a></span>
+                            
+                            </span>
+                        </address>
+                    </div>
                 </div>
             </div>
             <div class="col-md-1">
