@@ -15,46 +15,84 @@
         <c:import url="template/head.jsp"/>
         <style>
             //GOOGLE INC: MAPS
-            
+
         </style>
     </head>
     <body itemscope itemtype="http://schema.org/ContactPage">
         <header itemscope itemtype="http://schema.org/WPHeader">
             <c:import url="template/menu-nav.jsp"/>
         </header>
-        <article>
-            <div class ="row">
+            <article class="container-fluid">
+                <p>aaaa  ${hello}  ssss</p>
+                <div class ="row">
                 <div class="col-md-1"></div>
-                <div class="col-md-10" itemscope itemtype="http://schema.org/WebPageElement">
-                    <div class="page-header" >
-                        <h1>Contattaci,<small> oppure compila il modulo, ti contatteremo noi.</small></h1>
+                <div class="col-md-5">
+                    <div class ="row">
+                        <div class="col-md-12" itemscope itemtype="http://schema.org/WebPageElement">
+                            <div class="page-header" >
+                                <h1>Contattaci,<small> oppure compila il modulo,<br/> ti contatteremo noi.</small></h1>
+                            </div>
+                            <p>Contattaci per ottenere un preventivo gratuito per la ristrutturazione o per una consulenza su come ottimizzare il tuo budget.
+                                Se stai pensando di acquistrare un immobile per ristrutturarlo, possiamo anche aiutarti nel valutarne le caratteristiche
+                                al fine di effettuare il migliore investimento simulando le possibili soluzioni di revisione del layout.
+                            </p>
+                        </div>
                     </div>
-                    <p>Contattaci per ottenere un preventivo gratuito per la ristrutturazione o per una consulenza su come ottimizzare il tuo budget.
-                        Se stai pensando di acquistrare un immobile per ristrutturarlo, possiamo anche aiutarti nel valutarne le caratteristiche
-                        al fine di effettuare il migliore investimento simulando le possibili soluzioni di revisione del layout.
-                    </p>
-                    <div itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/WebPageElement">
+                    <br/>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form:form action="${pageContext.request.getContextPath()}/contatti/send-contact" modelAttribute="contact" class="form-horizontal" role="form" method="POST">
+                                <div class="form-group" style="margin-left:0px; margin-right: 0px">
+                                    <label for="nome">Nome<small class="text-muted"> (obbligatorio)</small></label>
+                                    <form:input path="nome" type="text" class="form-control" id="nome"/>
+                                </div>
 
-                        <address itemscope itemtype="http://schema.org/Place">
-                            <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-                                <span itemprop="name"><strong>Damici Ristrutturazioni</strong><br></span>
-                                Siamo in <span itemprop="streetAddress">Cso. Belgio, 16</span>
-                                - <span itemprop="postalCode">10153</span>
-                                <span itemprop="addressLocality">Torino</span>
-                                (<span itemprop="addressRegion">TO</span>)<br>
+                                    <div class="form-group" style="margin-left:0px; margin-right: 0px">
+                                        <label for="telefono" >Telefono </label>
+                                        <form:input path="telefono" type="text" class="form-control" id="telefono" />
+                                    </div>
 
-                                <span itemprop="telephone"><abbr title="Cellulare">Tel:</abbr> 328 586 4500</span>
-                                <span itemprop="email"><a href="mailto:#">damicisorin@ymail.com</a></span>
+                                    <div class="form-group" style="margin-left:0px; margin-right: 0px">
+                                        <label for="email" >Email<small class="text-muted"> (obbligatorio)</small></label>
+                                        <form:input path="email" type="email" class="form-control" id="email" placeholder="user@example.com"/>
+                                </div>
 
-                            </span>
-                        </address>
+                                <div class="form-group" style="margin-left:0px; margin-right: 0px">
+                                    <label for="messaggio">Messaggio<small class="text-muted"> (obbligatorio)</small></label>
+                                    <form:textarea path="messaggio" type="text" class="form-control" id="messaggio"/>
+                                </div>
+                                <div class="form-group" style="margin-left:0px; margin-right: 0px">
+                                    <button id="accedi" type="submit" class="btn btn-default">Invia</button>
+                                </div>
+                            </form:form>
+                        </div>
                     </div>
-
                 </div>
-                <div class="col-md-1">
+                <div class="col-md-5">
+                    <div class ="row">
+                        <div class="col-md-12" itemscope itemtype="http://schema.org/WebPageElement">
+                            <div itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/WebPageElement">
+                                <address class="lead  margin-40-top" itemscope itemtype="http://schema.org/Place">
+                                    <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                                        <span itemprop="name"><strong>Damici Ristrutturazioni</strong><br></span>
+                                        Siamo in <span itemprop="streetAddress">Cso. Belgio, 16</span>
+                                        - <span itemprop="postalCode">10153</span>
+                                        <span itemprop="addressLocality">Torino</span>
+                                        (<span itemprop="addressRegion">TO</span>)<br>
+                                        <span itemprop="telephone"><abbr title="Cellulare">Tel:</abbr> 328 586 4500</span><br>
+                                        <span itemprop="email"><a href="mailto:#">damicisorin@ymail.com</a></span>
+                                    </span>
+                                </address>
+                            </div>
+                        </div>
+                    </div>
+                    <div class ="row">
+                        <div class="col-md-12" itemscope itemtype="http://schema.org/WebPageElement">
+                            <div id="map_canvas" class ="map_google" style="height: 400px; width: 600px; max-width: 100%"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div id="map_canvas" class ="map_google"></div>
         </article>
         <c:import url="template/read-more-script.jsp"/>
     </body>

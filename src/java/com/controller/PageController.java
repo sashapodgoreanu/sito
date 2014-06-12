@@ -72,40 +72,6 @@ public class PageController {
         return "redirect:azienda/";
     }
 
-    @RequestMapping(value = {"contatti/"}, method = RequestMethod.GET)
-    public ModelAndView contatti() {
-        ModelAndView mav = new ModelAndView("contatti");//add view - contatti.jsp  
-        return mav;
-    }
-
-    @RequestMapping(value = {"contatti"}, method = {RequestMethod.GET})
-    public String redirectContatti() {
-        return "redirect:contatti/";
-    }
-
-    
-    /* NON USATO...
-     * 
-     @RequestMapping(value = "/insertJdbcContact", method = RequestMethod.POST)
-     public ModelAndView insertContact2() {
-     ModelAndView mav = new ModelAndView("insertDataPage");
-     Dati bean = new Dati();// crea il bean per la pagina insertJdbcContact
-     mav.addObject("insertUser", bean);
-     mav.addObject("status", "success");
-     return mav;
-     }
-    
-     // non usato ...
-     @RequestMapping(value = "/viewData", method = RequestMethod.GET)
-     public ModelAndView viewDataGet() {
-     ModelAndView mav = new ModelAndView("viewDataPage");
-     Dati userData = new Dati();
-     mav.addObject("insertUser", userData);
-     mav.addObject("status", "success");
-     return mav;
-     }
-     */
-
     @PostConstruct
     public void Init() {
         log = LogFactory.getLog(LoginController.class.getName());
