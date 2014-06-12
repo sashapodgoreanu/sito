@@ -7,9 +7,10 @@
 
 @font-face { 
     font-family: 'Facebook-Letter-Faces';
-        src: url('fonts/font.eot'); /* IE */ 
-        src: url('fonts/FACEBOLF.OTF');               
+    src: url('fonts/font.eot'); /* IE */ 
+    src: url('fonts/FACEBOLF.OTF');               
 }
+
 
 html { height: 100%;
        overflow-y: scroll;}
@@ -23,6 +24,8 @@ body {
     //max-width:1220px;
     //background-image: url(../immagini/aaa.jpg);
 }
+
+html, body, .col-md-12 , article, .container-fluid { height: 100% }
 
 header{
     background-color: darkslategray;
@@ -77,3 +80,9 @@ li.social a {
 .margin-6-top{
     margin-top: 6px;
 }
+
+.map_google {
+    width:100%;
+    height:100%;
+}
+
