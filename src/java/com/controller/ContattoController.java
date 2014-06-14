@@ -6,7 +6,11 @@
 package com.controller;
 
 import com.beans.Contatto;
+import com.beans.ContattoValidation;
+import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,12 +24,21 @@ import org.springframework.web.servlet.ModelAndView;
 public class ContattoController {
 
     @RequestMapping(value = {"contatti/send-contact"}, method = {RequestMethod.POST})
-    public ModelAndView sendContact(@ModelAttribute("contact") Contatto contact) {
+    public String sendContact(@Valid @ModelAttribute("contact") Contatto contact, BindingResult bindingResult, Model model) {
         System.out.println("Contact " + contact.toString());
+        //bindingResult.rejectValue("nome", "messageCode", "Default error message");
+        ContattoValidation cv = new ContattoValidation();
+        cv.validate(contact, bindingResult);
+        System.out.println("BR " + bindingResult.toString());
 
-        ModelAndView mav = new ModelAndView("contatti");
-        mav.addObject("contact", contact);
-        return mav;
+        if (bindingResult.hasErrors()) {
+            return "contatti";
+        }
+        //ModelAndView mav = new ModelAndView("contatti");
+        model.addAttribute("contact", contact);
+        model.addAttribute("contact", new Contatto());
+        model.addAttribute("success", "Inviato co successo");
+        return "contatti";
     }
 
     @RequestMapping(value = {"contatti/"}, method = RequestMethod.GET)
@@ -40,6 +53,5 @@ public class ContattoController {
     public String redirectContatti() {
         return "redirect:contatti/";
     }
-
 
 }

@@ -3,9 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.beans;
-
 /**
  *
  * @author SashaAlexandru
@@ -56,6 +54,5 @@ public class Contatto {
     public String toString() {
         return "Contatto{" + "nome=" + nome + ", telefono=" + telefono + ", email=" + email + ", messaggio=" + messaggio + '}';
     }
-
 
 }

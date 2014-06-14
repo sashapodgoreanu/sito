@@ -9,13 +9,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
+
 <!DOCTYPE html>
 <html>
     <head>
         <c:import url="template/head.jsp"/>
         <style>
-            //GOOGLE INC: MAPS
-
+            .error {
+                color: #ff0000;
+                font-style: italic;
+                font-weight: bold;
+            }
         </style>
     </head>
     <body itemscope itemtype="http://schema.org/ContactPage">
@@ -25,8 +30,8 @@
             <article class="container-fluid">
                 <p>aaaa  ${hello}  ssss</p>
                 <div class ="row">
-                <div class="col-md-1"></div>
-                <div class="col-md-5">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5">
                     <div class ="row">
                         <div class="col-md-12" itemscope itemtype="http://schema.org/WebPageElement">
                             <div class="page-header" >
@@ -41,30 +46,35 @@
                     <br/>
                     <div class="row">
                         <div class="col-md-12">
-                            <form:form action="${pageContext.request.getContextPath()}/contatti/send-contact" modelAttribute="contact" class="form-horizontal" role="form" method="POST">
+                            <sf:form action="${pageContext.request.getContextPath()}/contatti/send-contact" modelAttribute="contact" class="form-horizontal" role="form" method="POST">
                                 <div class="form-group" style="margin-left:0px; margin-right: 0px">
                                     <label for="nome">Nome<small class="text-muted"> (obbligatorio)</small></label>
-                                    <form:input path="nome" type="text" class="form-control" id="nome"/>
+                                    <sf:input path="nome" type="text" class="form-control" id="nome"/>
+                                    <sf:errors path="nome" cssClass="error"/>
                                 </div>
 
                                     <div class="form-group" style="margin-left:0px; margin-right: 0px">
                                         <label for="telefono" >Telefono </label>
-                                        <form:input path="telefono" type="text" class="form-control" id="telefono" />
+                                        <sf:input path="telefono" type="text" class="form-control" id="telefono" />
+                                        <sf:errors path="telefono" cssClass="error"/>
                                     </div>
 
                                     <div class="form-group" style="margin-left:0px; margin-right: 0px">
                                         <label for="email" >Email<small class="text-muted"> (obbligatorio)</small></label>
-                                        <form:input path="email" type="email" class="form-control" id="email" placeholder="user@example.com"/>
-                                </div>
+                                        <sf:input path="email" type="email" class="form-control" id="email" placeholder="user@example.com"/>
+                                        <sf:errors path="email" cssClass="error"/>
+                                    </div>
 
                                 <div class="form-group" style="margin-left:0px; margin-right: 0px">
                                     <label for="messaggio">Messaggio<small class="text-muted"> (obbligatorio)</small></label>
-                                    <form:textarea path="messaggio" type="text" class="form-control" id="messaggio"/>
+                                    <sf:textarea path="messaggio" type="text" class="form-control" id="messaggio"/>
+                                    <sf:errors path="messaggio" cssClass="error"/>
                                 </div>
                                 <div class="form-group" style="margin-left:0px; margin-right: 0px">
                                     <button id="accedi" type="submit" class="btn btn-default">Invia</button>
                                 </div>
-                            </form:form>
+                            </sf:form>
+                            <p class="bg-success">${success}</p>
                         </div>
                     </div>
                 </div>
