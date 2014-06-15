@@ -16,21 +16,21 @@ import org.springframework.validation.Validator;
  * @author SashaAlexandru
  */
 @Component
-public class ContattoValidation implements Validator {
+public class ContattoValidator implements Validator {
 
-    private static final Logger LOG = Logger.getLogger(ContattoValidation.class.getName());
+    private static final Logger LOG = Logger.getLogger(ContattoValidator.class.getName());
 
+    String error1 = "Questo campo e richiesto";
+    String messageCode = "messageCode";
 
     /**
-     * This Validator validates Customer instances, and any subclasses of
+     * This Validator validates Contatto instances, and any subclasses of
      * Customer too
      */
     @Override
     public boolean supports(Class clazz) {
         return Contatto.class.isAssignableFrom(clazz);
     }
-    String error1 = "Questo campo e richiesto";
-    String messageCode = "messageCode";
 
     @Override
     public void validate(Object o, Errors errors) {

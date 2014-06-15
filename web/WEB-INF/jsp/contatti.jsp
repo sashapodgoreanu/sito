@@ -15,13 +15,6 @@
 <html>
     <head>
         <c:import url="template/head.jsp"/>
-        <style>
-            .error {
-                color: #ff0000;
-                font-style: italic;
-                font-weight: bold;
-            }
-        </style>
     </head>
     <body itemscope itemtype="http://schema.org/ContactPage">
         <header itemscope itemtype="http://schema.org/WPHeader">

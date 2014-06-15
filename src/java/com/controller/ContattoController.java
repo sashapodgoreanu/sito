@@ -6,7 +6,7 @@
 package com.controller;
 
 import com.beans.Contatto;
-import com.beans.ContattoValidation;
+import com.beans.ContattoValidator;
 import com.service.GmailMail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,7 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class ContattoController {
 
     @Autowired
-    ContattoValidation contattoValidation;
+    ContattoValidator contattoValidation;
     @Autowired    
     GmailMail gmailMail;
 
@@ -55,7 +55,7 @@ public class ContattoController {
             }
             model.addAttribute("contact", new Contatto());//if no error then create new contact
         }
-        return "contatti";
+        return "redirect:contatti";
     }
 
     @RequestMapping(value = {"contatti/"}, method = RequestMethod.GET)

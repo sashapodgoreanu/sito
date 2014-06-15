@@ -133,3 +133,9 @@ li.social a {
 .padding-right-20{
     padding-left: 20px;
 }
+
+.error {
+    color: #ff0000;
+    font-style: italic;
+    font-weight: bold;
+}

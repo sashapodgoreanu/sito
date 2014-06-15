@@ -6,12 +6,14 @@
 package com.controller;
 
 import com.beans.WebAdmin;
+import com.beans.WebAdminValidator;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,6 +31,8 @@ public class LoginController {
     @Autowired
     private HttpSession session;
     @Autowired
+    WebAdminValidator webAdminValidator;
+    @Autowired
     private WebAdmin webAdmin;
 
     @RequestMapping(value = {"login/"}, method = RequestMethod.GET)
@@ -41,16 +45,15 @@ public class LoginController {
     }
 
     @RequestMapping(value = {"login/enter"})
-    public ModelAndView enter(@ModelAttribute("webAdminForm") WebAdmin webAdminForm, HttpServletRequest request) {
-
-        ModelAndView mav = new ModelAndView("redirect:/login/");
-        System.out.println("enter webAdmin: login/enter " + webAdmin);
-        System.out.println("enter webAdminForm: login/enter " + webAdminForm);
+    public ModelAndView enter(@ModelAttribute("webAdminForm") WebAdmin webAdminForm,
+            BindingResult bindingResult, HttpServletRequest request) {
+        ModelAndView mav = new ModelAndView("login");
         webAdmin = webAdminForm;
         webAdmin.authenticate();
-        System.out.println("enter webAdmin: login/enter " + webAdmin);
+        webAdminValidator.validate(webAdmin, bindingResult);
+
         //Guarda login()
-        //session.setAttribute("webAdminSession", webAdmin);
+        session.setAttribute("webAdminSession", webAdmin);
         return mav;
     }
 

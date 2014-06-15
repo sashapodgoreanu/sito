@@ -9,6 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -25,23 +26,22 @@
                     <div class="panel panel-success" style="margin-top:100px">
                         <div class="panel-heading">Login</div>
                         <div class="panel-body">
-                            ${webAdminSession.valid == false}
-                            ${webAdminSession.nome}
-                            ${webAdminSession.password}
                             <c:choose>
                                 <c:when test = "${webAdminSession.valid == false}">   
-                                    <form:form action="enter" modelAttribute="webAdminForm" class="form-horizontal" role="form" method="POST">
+                                    <sf:form action="enter" modelAttribute="webAdminForm" class="form-horizontal" role="form" method="POST">
                                         <div class="form-group">
                                             <label for="inputUser" class="col-sm-2 control-label">Utente</label>
                                             <div class="col-sm-10">
-                                                <form:input path="login" type="text" class="form-control" id="inputUser" placeholder="Utente"/>
+                                                <sf:input path="login" type="text" class="form-control" id="inputUser" placeholder="Utente"/>
+                                                <sf:errors path="login" cssClass="error"/>
                                             </div>
 
                                         </div>
                                         <div class="form-group">
                                             <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
                                             <div class="col-sm-10">
-                                                <form:input path="password" type="password" class="form-control" id="inputPassword3" placeholder="Password"/>
+                                                <sf:input path="password" type="password" class="form-control" id="inputPassword3" placeholder="Password"/>
+                                                <sf:errors path="password" cssClass="error"/>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -58,16 +58,16 @@
                                                 <button id="accedi" type="submit" class="btn btn-default">Accedi</button>
                                             </div>
                                         </div>
-                                        <c:if test = "${webAdminSession.valid == false}">
+
                                             <div class ="row">
                                                 <div class="col-sm-2">
                                                 </div>
                                                 <div class="col-sm-10">
-                                                    <p class="bg-danger text-center lead">La password o il nome utente inserito non è corretto</p>
+                                                    <sf:errors path="valid" cssClass="bg-danger text-center lead"/>
                                                 </div>
                                             </div>
-                                        </c:if>
-                                    </form:form>
+
+                                    </sf:form>
                                 </c:when>
                                 <c:otherwise>
                                     <form:form action="logout"> 
