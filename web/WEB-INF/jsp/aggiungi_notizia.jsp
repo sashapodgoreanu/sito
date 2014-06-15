@@ -40,7 +40,7 @@
                         <div class="panel-heading">Aggiungi Articolo</div>
                         <div class="panel-body">
                             <c:choose>
-                                <c:when test = "${webAdminSession.nome != null || webAdminSession.valid == true}">   
+                                <c:when test = "${webAdminSession.valid == true}">   
                                     <form:form role="form" action="${pageContext.request.getContextPath()}/aggiungi-notizia/upload"  modelAttribute="uploadImmagini" method="post" enctype="multipart/form-data">
                                         <div class="form-group">
                                             <table id="fileTable">

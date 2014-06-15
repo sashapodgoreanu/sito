@@ -9,6 +9,7 @@ import java.sql.Timestamp;
 import java.util.Arrays;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -17,6 +18,8 @@ import org.apache.commons.logging.LogFactory;
 public class CreateTables {
 
     static Log log = LogFactory.getLog(CreateTables.class.getName());
+    @Autowired
+    static WebAdmin webAdmin;
 
     public static void main(String[] args) {
         try {
@@ -25,11 +28,10 @@ public class CreateTables {
             dbc.registerDB();
             dbc.createTables();
 
-            WebAdmin webA = new WebAdmin();
-            webA.setLogin("Sasha");
-            webA.setNome("Sasha Alexandru");
-            webA.setPassword("645128wasd");
-            webA.register();
+            webAdmin.setLogin("Sasha");
+            webAdmin.setNome("Sasha Alexandru");
+            webAdmin.setPassword("645128wasd");
+            webAdmin.register();
 
             Notizia home = new Notizia("<h3>Ristrutturare casa: <small>guida agli incentivi</small></h3> ",
                     "<h4 class=\"text-primary\">RISTRUTTURAZIONI E DETRAZIONI</h4>\n"

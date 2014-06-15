@@ -5,6 +5,8 @@
  */
 package com.beans;
 
+import java.util.logging.Logger;
+import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
@@ -13,7 +15,11 @@ import org.springframework.validation.Validator;
  *
  * @author SashaAlexandru
  */
+@Component
 public class ContattoValidation implements Validator {
+
+    private static final Logger LOG = Logger.getLogger(ContattoValidation.class.getName());
+
 
     /**
      * This Validator validates Customer instances, and any subclasses of
@@ -32,15 +38,15 @@ public class ContattoValidation implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", messageCode, error1);
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "messaggio", messageCode, error1);
         Contatto contatto = (Contatto) o;
-        if (contatto.getTelefono().length() > 1) {
-
-            if (!isNumeric(contatto.getTelefono())) {
-                errors.rejectValue("telefono", messageCode, "Telefono non valido");
-            }
-            System.out.println("helllo");
+        if (!isNumeric(contatto.getTelefono()) && contatto.getTelefono().length() != 0) {
+            errors.rejectValue("telefono", messageCode, "Telefono non valido");
         }
 
-        if (contatto.getMessaggio().length() < 10 || contatto.getMessaggio().length() > 5000) {
+        if (contatto.getTelefono().length() < 10) {
+            errors.rejectValue("telefono", messageCode, "Telefono non valido, devi inserire almeno 10 numeri");
+        }
+
+        if (contatto.getMessaggio().length() < 10 || contatto.getMessaggio().length() > 2048) {
             errors.rejectValue("messaggio", messageCode, "Questo campo deve contenere almeno 10 caratteri");
         }
     }
@@ -49,6 +55,7 @@ public class ContattoValidation implements Validator {
         try {
             double d = Double.parseDouble(str);
         } catch (NumberFormatException nfe) {
+            LOG.severe(nfe.getMessage());
             return false;
         }
         return true;

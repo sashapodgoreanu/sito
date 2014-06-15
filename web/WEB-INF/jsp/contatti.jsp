@@ -28,7 +28,6 @@
             <c:import url="template/menu-nav.jsp"/>
         </header>
             <article class="container-fluid">
-                <p>aaaa  ${hello}  ssss</p>
                 <div class ="row">
                     <div class="col-md-1"></div>
                     <div class="col-md-5">
@@ -46,6 +45,8 @@
                     <br/>
                     <div class="row">
                         <div class="col-md-12">
+                            <p class="bg-success text-center">${success}</p>
+                            <p class="bg-warning text-center">${notSuccess}</p>
                             <sf:form action="${pageContext.request.getContextPath()}/contatti/send-contact" modelAttribute="contact" class="form-horizontal" role="form" method="POST">
                                 <div class="form-group" style="margin-left:0px; margin-right: 0px">
                                     <label for="nome">Nome<small class="text-muted"> (obbligatorio)</small></label>
@@ -74,7 +75,6 @@
                                     <button id="accedi" type="submit" class="btn btn-default">Invia</button>
                                 </div>
                             </sf:form>
-                            <p class="bg-success">${success}</p>
                         </div>
                     </div>
                 </div>

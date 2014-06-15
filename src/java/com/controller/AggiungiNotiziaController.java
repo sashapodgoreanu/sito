@@ -54,6 +54,7 @@ public class AggiungiNotiziaController {
     ServletContext servletContext;
     @Autowired
     private HttpSession session;
+    @Autowired
     private WebAdmin webAdmin;
     //private static final String imagesPath = "C://XML//";
     private String imagesPath;
@@ -65,8 +66,8 @@ public class AggiungiNotiziaController {
             @RequestParam("corpoNotizia") String corpoNotizia
     ) {
 
-        webAdmin = (WebAdmin) session.getAttribute("webAdminSession");
-        if (webAdmin == null) {
+        //webAdmin = (WebAdmin) session.getAttribute("webAdminSession");
+        if (!webAdmin.isValid()) {
             //utente non autenticato
             loginController.redirectLogin();
         }
@@ -117,8 +118,8 @@ public class AggiungiNotiziaController {
     public ModelAndView aggiungiNotizia() {
         //System.out.println("imagesPath  " + imagesPath);
         ProxyNotiziaHandler proxy = ProxyNotiziaHandler.getInstance();
-        webAdmin = (WebAdmin) session.getAttribute("webAdminSession");
-        if (webAdmin == null) {
+        //webAdmin = (WebAdmin) session.getAttribute("webAdminSession");
+        if (!webAdmin.isValid()) {
             loginController.redirectLogin();
         }
 

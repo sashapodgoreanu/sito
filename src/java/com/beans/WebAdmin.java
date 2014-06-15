@@ -10,19 +10,24 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author Sasha Alexandru Podgoreanu
  */
-
+@Component
 public class WebAdmin {
 
     private String nome;
     private String password;
     private String login;
-    private boolean valid = false;
+    private boolean valid;
     private String lastOnline;
+
+    public WebAdmin() {
+        valid = false;
+    }
 
     public String getLogin() {
         return login;
@@ -43,10 +48,6 @@ public class WebAdmin {
     public WebAdmin(String nome, String password) {
         this.nome = nome;
         this.password = password;
-    }
-
-    public WebAdmin() {
-        
     }
 
     public String getNome() {
@@ -70,15 +71,6 @@ public class WebAdmin {
         try {
             valid = dbc.verificaUtente(this);
             System.out.println(this.toString());
-            /*
-            if (valid) {
-                java.util.Date date = new java.util.Date();
-                String updateLastAccessQuerry = "UPDATE WEB_ADMIN "
-                        + " SET LASTLOGIN ='" + (new Timestamp(date.getTime())) + "'"
-                        + " WHERE LOGIN = '" + this.login + "';";
-                DBController.execute(updateLastAccessQuerry);
-            }
-            */
         } catch (SQLException ex) {
             Logger.getLogger(WebAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -88,6 +80,7 @@ public class WebAdmin {
 
     /**
      * register new user
+     *
      * @return false if user allready exists
      */
     public boolean register() {
@@ -107,9 +100,6 @@ public class WebAdmin {
         return "WebAdmin{" + "nome=" + nome + ", password=" + password + ", login=" + login + ", valid=" + valid + ", lastOnline=" + lastOnline + '}';
     }
 
-    
-    
-
     /**
      * Aggiorna last login del utente;
      */
@@ -125,6 +115,15 @@ public class WebAdmin {
         } catch (SQLException ex) {
             Logger.getLogger(WebAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
+        reset();
+    }
+
+    private void reset() {
+        this.valid = false;
+        this.nome = null;
+        this.password = null;
+        this.login = null;
+        this.lastOnline = null;
     }
 
 }

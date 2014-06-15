@@ -6,12 +6,10 @@
 package com.controller;
 
 import com.beans.WebAdmin;
-import javax.annotation.PostConstruct;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -26,53 +24,41 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LoginController {
 
+    private static final Logger LOG = Logger.getLogger(LoginController.class.getName());
+
     @Autowired
     private HttpSession session;
-    private Log log = LogFactory.getLog(LoginController.class.getName());
-
-    private WebAdmin webAdminForm;
-
-    @PostConstruct
-    void init() {
-        webAdminForm = new WebAdmin();
-        webAdminForm.setNome(null);
-    }
+    @Autowired
+    private WebAdmin webAdmin;
 
     @RequestMapping(value = {"login/"}, method = RequestMethod.GET)
-    public ModelAndView login(/*@CookieValue(value = "username", defaultValue = "0") String username,
-             @CookieValue(value = "password", defaultValue = "0") String password,
-             HttpServletResponse response*/) {
-        //WebAdmin webAdmin = new WebAdmin();
-        //webAdmin.setLogin(username);
-        //webAdmin.setPassword(password);
-        //webAdmin.authenticate();
-        //session.setAttribute("webAdminSession", webAdmin);
+    public ModelAndView login() {
+        System.out.println("login" + webAdmin.toString());
         ModelAndView mav = new ModelAndView("login");
-        mav.addObject("webAdmin", webAdminForm);
+        session.setAttribute("webAdminSession", webAdmin);
+        mav.addObject("webAdminForm", new WebAdmin());
         return mav;
     }
 
     @RequestMapping(value = {"login/enter"})
-    public ModelAndView enter(@ModelAttribute("webAdmin") WebAdmin webAdmin, HttpServletRequest request) {
+    public ModelAndView enter(@ModelAttribute("webAdminForm") WebAdmin webAdminForm, HttpServletRequest request) {
+
         ModelAndView mav = new ModelAndView("redirect:/login/");
-        if (request.getMethod().equalsIgnoreCase("POST")) {
-            webAdmin.authenticate();
-            session.setAttribute("webAdminSession", webAdmin);
-        }
+        System.out.println("enter webAdmin: login/enter " + webAdmin);
+        System.out.println("enter webAdminForm: login/enter " + webAdminForm);
+        webAdmin = webAdminForm;
+        webAdmin.authenticate();
+        System.out.println("enter webAdmin: login/enter " + webAdmin);
+        //Guarda login()
+        //session.setAttribute("webAdminSession", webAdmin);
         return mav;
     }
 
     @RequestMapping(value = {"login/logout"})
     public ModelAndView logout(HttpServletResponse response) {
-        WebAdmin webAdminSession = (WebAdmin) session.getAttribute("webAdminSession");
-        if (webAdminSession != null) {
-            webAdminSession.cleanUp(); //timeStamp to user lastlogin
-        }
-        session.removeAttribute("webAdminSession");
-        //Cookie cookieUsername = new Cookie("username", "");
-        //Cookie cookiePassword = new Cookie("password", "");
-        //response.addCookie(cookieUsername);
-        //response.addCookie(cookiePassword);
+        System.out.println("Loging out");
+        webAdmin.cleanUp(); //timeStamp to user lastlogin
+        session.invalidate();
         ModelAndView mav = new ModelAndView("redirect:/login/");
         return mav;
     }
@@ -81,10 +67,4 @@ public class LoginController {
     public String redirectLogin() {
         return "redirect:login/";
     }
-
-    /*
-     @PreDestroy
-     public void cleanUp() throws Exception {
-     userData.cleanUp();
-     }*/
 }

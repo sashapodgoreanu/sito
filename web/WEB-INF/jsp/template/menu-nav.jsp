@@ -76,15 +76,15 @@
                         <li><a href="#">Mappa del Sito</a></li>
                         <li><a href="${pageContext.request.getContextPath()}/note-legali/">Note legali/Privacy</a></li>
                             <c:choose>
-                                <c:when test = "${webAdminSession != null}">
+                                <c:when test = "${webAdminSession.valid == true}">
                                 <li><a href="${pageContext.request.getContextPath()}/login/">Logout</a></li>
-                                </c:when>
+                            </c:when>
                                 <c:otherwise>
                                 <li><a href="${pageContext.request.getContextPath()}/login/">Login</a></li>
                                 </c:otherwise>
                             </c:choose>
-                        <c:if test = "${webAdminSession != null}">
-                            <li class="divider"></li>
+                                    <c:if test = "${webAdminSession.valid == true}">
+                                    <li class="divider"></li>
                             <li><a href="${pageContext.request.getContextPath()}/aggiungi-notizia/">Aggiungi Notizia</a></li>
                         </c:if>
                     </ul>

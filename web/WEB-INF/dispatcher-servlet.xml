@@ -37,15 +37,44 @@
             </props>
         </property>
     </bean> -->
+    
+    <!-- View Resolver -->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
     
+    <!-- Multipart File upload Resolver -->
     <bean id="multipartResolver"
           class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 
         <!-- one of the properties available; the maximum file size in bytes -->
         <property name="maxUploadSize" value="419430400"/>
+    </bean>
+    
+    <!-- Mail -->
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host">
+            <value>smtp.gmail.com</value>
+        </property>
+        <property name="port">
+            <value>587</value>
+        </property>
+        <property name="protocol">
+            <value>smtp</value>
+        </property>
+        <property name="username">
+            <value>damicicostruzioni</value>
+        </property>
+        <property name="password">
+            <value>645128wasd</value>
+        </property>
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.smtp.quitwait">false</prop>
+            </props>
+        </property>
     </bean>
 </beans>

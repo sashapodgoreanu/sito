@@ -3,12 +3,17 @@ package com.service;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Map;
+import org.springframework.stereotype.Component;
 
+@Component
 public class QueryResult {
 
     private ArrayList<Map<String, Object>> lista;
     private int iterator;
     private int size;
+
+    public QueryResult() {
+    }
 
     public QueryResult(ArrayList<Map<String, Object>> lista) {
         this.lista = lista;

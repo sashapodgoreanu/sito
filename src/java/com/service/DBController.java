@@ -14,11 +14,15 @@ import java.util.HashMap;
 import java.util.Map;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Podgoreanu Alexandru
  */
+@Service
+@Scope(value = "singleton")
 public final class DBController {
 
     //jdbc:mysql://localhost:3306/dbname
@@ -92,6 +96,14 @@ public final class DBController {
     public void createTables() throws SQLException {
         connect();
         DatabaseMetaData md = conn.getMetaData();
+        String createContatto = "CREATE TABLE CONTATTO"
+                + "("
+                + "ID INTEGER PRIMARY KEY AUTO_INCREMENT,"
+                + "NOME VARCHAR (128) NOT NULL,"
+                + "TELEFONO VARCHAR (20),"
+                + "EMAIL VARCHAR (128) NOT NULL,"
+                + "MESSAGGIO VARCHAR (2048) NOT NULL"
+                + ")";
         String createImmagine = "CREATE TABLE IMMAGINE"
                 + "("
                 + "ID INTEGER PRIMARY KEY AUTO_INCREMENT,"
@@ -127,6 +139,10 @@ public final class DBController {
                 + ")";
         try {
 
+            if (isTableExist("Contatto")) {
+                st.execute("DROP TABLE Contatto");
+                System.out.println("INFO SERVICE:" + this.getClass() + "." + Thread.currentThread().getStackTrace()[1].getMethodName() + ": Tabella SessioneLavoro eliminata!");
+            }
             if (isTableExist("NOTIZIA_IMMAGINI")) {
                 st.execute("DROP TABLE NOTIZIA_IMMAGINI");
                 System.out.println("INFO SERVICE:" + this.getClass() + "." + Thread.currentThread().getStackTrace()[1].getMethodName() + ": Tabella SessioneLavoro eliminata!");
@@ -143,6 +159,9 @@ public final class DBController {
                 st.execute("DROP TABLE WEB_ADMIN");
                 System.out.println("INFO SERVICE:" + this.getClass() + "." + Thread.currentThread().getStackTrace()[1].getMethodName() + ": Tabella SessioneLavoro eliminata!");
             }
+
+            st.executeUpdate(createContatto);
+            System.out.println("Tabela Contatto creata");
 
             st.executeUpdate(createImmagine);
             System.out.println("Tabela IMMAGINE creata");

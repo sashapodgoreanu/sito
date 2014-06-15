@@ -25,9 +25,12 @@
                     <div class="panel panel-success" style="margin-top:100px">
                         <div class="panel-heading">Login</div>
                         <div class="panel-body">
+                            ${webAdminSession.valid == false}
+                            ${webAdminSession.nome}
+                            ${webAdminSession.password}
                             <c:choose>
-                                <c:when test = "${webAdminSession.nome == null || webAdminSession.valid == false}">   
-                                    <form:form action="enter" modelAttribute="webAdmin" class="form-horizontal" role="form" method="POST">
+                                <c:when test = "${webAdminSession.valid == false}">   
+                                    <form:form action="enter" modelAttribute="webAdminForm" class="form-horizontal" role="form" method="POST">
                                         <div class="form-group">
                                             <label for="inputUser" class="col-sm-2 control-label">Utente</label>
                                             <div class="col-sm-10">
