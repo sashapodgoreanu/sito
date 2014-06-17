@@ -54,11 +54,19 @@
                                             <button id="addImmagine" type="button" class="btn btn-default">Aggiungi un'altra immagine</button>
                                         </div>
                                         <div class="form-group">
-                                            <label for="titoloNotizia">Tipo Articolo</label>
+                                            <label for="tipoArticolo">Tipo Articolo</label>
                                             <select class="form-control" required="true" name="tipo">
                                                 <c:forEach items="${tipo}" var="i">
                                                     <option><c:out value="${i}"/></option>
                                                 </c:forEach>  
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="priorita">Priorita</label>
+                                            <select id ="priorita" class="form-control" required="true" name="priorita">
+                                                <c:forEach items="${priorita}" var="i">
+                                                    <option value ="<c:out value="${i.value}"/>"> <c:out value="${i.key}"/></option>
+                                                </c:forEach>
                                             </select>
                                         </div>
 

@@ -8,6 +8,7 @@ package com.controller;
 import com.beans.Immagine;
 import com.beans.Notizia;
 import com.beans.NotiziaMultifileUpload;
+import com.beans.Priorita;
 import com.beans.Tipo;
 import com.beans.WebAdmin;
 import java.io.FileOutputStream;
@@ -46,6 +47,8 @@ public class AggiungiNotiziaController {
 
     @Autowired
     LoginController loginController;
+    @Autowired
+    Priorita priorita;
 
     //path dell http://www.damicicostruzioni.it/images/ 
     //private static final String imagesPath = "C:/PROGRA~1/APACHE~1/TOMCAT~1.34/instances/tomcat7.0.34_835/images";
@@ -122,6 +125,7 @@ public class AggiungiNotiziaController {
         NotiziaMultifileUpload uploadNotizia = new NotiziaMultifileUpload();
         mav.addObject("uploadNotizia", uploadNotizia);//per il foarm
         mav.addObject("tipo", Tipo.getValues()); //agiungi tipi : bagno, cucina etc
+        mav.addObject("priorita", priorita.getAllPriorita()); //agiungi tipi : bagno, cucina etc
         return mav;
     }
 
