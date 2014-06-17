@@ -168,4 +168,15 @@ public class RealNotiziaHandler implements NotiziaHandler {
         return notizia;
     }
 
+    @Override
+    public boolean IsDirty() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setDirty(boolean isDirty) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
 }

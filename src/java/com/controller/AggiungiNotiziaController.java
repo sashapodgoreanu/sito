@@ -6,8 +6,9 @@
 package com.controller;
 
 import com.beans.Immagine;
-import com.beans.MultiFileUpload;
 import com.beans.Notizia;
+import com.beans.NotiziaMultifileUpload;
+import com.beans.Tipo;
 import com.beans.WebAdmin;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -30,7 +31,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -59,13 +59,7 @@ public class AggiungiNotiziaController {
     private String imagesPath;
 
     @RequestMapping(value = "aggiungi-notizia/upload", method = RequestMethod.POST)
-    public ModelAndView handleFormUpload(@ModelAttribute("uploadForm") MultiFileUpload mfu,
-            @RequestParam("tipoNotizia") String tipoNotizia,
-            @RequestParam("titoloNotizia") String titoloNotizia,
-            @RequestParam("corpoNotizia") String corpoNotizia
-    ) {
-
-        //webAdmin = (WebAdmin) session.getAttribute("webAdminSession");
+    public ModelAndView handleFormUpload(@ModelAttribute("uploadForm") NotiziaMultifileUpload mfu) {
         if (!webAdmin.isValid()) {
             //utente non autenticato
             loginController.redirectLogin();
@@ -78,7 +72,7 @@ public class AggiungiNotiziaController {
          } else {
             session.setAttribute("idNotizia", false);
         }
-        Notizia notizia = new Notizia(titoloNotizia, corpoNotizia, tipoNotizia, (new Timestamp(new java.util.Date().getTime())));
+        Notizia notizia = new Notizia(mfu.getNome(), mfu.getArticolo(), mfu.getTipo(), (new Timestamp(new java.util.Date().getTime())));
         List<MultipartFile> filePartsList = mfu.getFiles();
         boolean success = true;
         for (MultipartFile filePart : filePartsList) {
@@ -125,8 +119,9 @@ public class AggiungiNotiziaController {
         //per prevenire che la stessa notizia venga salvata piu di una volta al click del refresh del browser
         session.setAttribute("idNotizia", true);
         ModelAndView mav = new ModelAndView("aggiungi_notizia");
-        MultiFileUpload uploadImmagini = new MultiFileUpload();
-        mav.addObject("uploadImmagini", uploadImmagini);
+        NotiziaMultifileUpload uploadNotizia = new NotiziaMultifileUpload();
+        mav.addObject("uploadNotizia", uploadNotizia);//per il foarm
+        mav.addObject("tipo", Tipo.getValues()); //agiungi tipi : bagno, cucina etc
         return mav;
     }
 

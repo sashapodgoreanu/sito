@@ -12,7 +12,6 @@ import java.util.ArrayList;
  *
  * @author SashaAlexandru
  */
-
 public interface NotiziaHandler {
 
     public ArrayList<Notizia> getNotiziaPopulare();
@@ -32,5 +31,9 @@ public interface NotiziaHandler {
     public ArrayList<Notizia> getNotiziaDecorazioni();
 
     public ArrayList<Notizia> getNotiziaCondominio();
+
+    public boolean IsDirty();
+
+    public void setDirty(boolean isDirty);
 
 }

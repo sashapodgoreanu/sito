@@ -41,7 +41,7 @@
                         <div class="panel-body">
                             <c:choose>
                                 <c:when test = "${webAdminSession.valid == true}">   
-                                    <form:form role="form" action="${pageContext.request.getContextPath()}/aggiungi-notizia/upload"  modelAttribute="uploadImmagini" method="post" enctype="multipart/form-data">
+                                    <form:form role="form" action="${pageContext.request.getContextPath()}/aggiungi-notizia/upload"  modelAttribute="uploadNotizia" method="post" enctype="multipart/form-data">
                                         <div class="form-group">
                                             <table id="fileTable">
                                                 <tr>
@@ -55,23 +55,21 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="titoloNotizia">Tipo Articolo</label>
-                                            <select class="form-control" required="true" name="tipoNotizia">
-                                                <option>Decorazioni</option>
-                                                <option>Ristrutturazione</option>
-                                                <option>Home</option>
-                                                <option>Azienda</option>
-                                                <option>Testimonianze</option>
+                                            <select class="form-control" required="true" name="tipo">
+                                                <c:forEach items="${tipo}" var="i">
+                                                    <option><c:out value="${i}"/></option>
+                                                </c:forEach>  
                                             </select>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="titoloNotizia">Titolo</label>
-                                            <input id = "titoloNotizia" class="form-control" type="text" name="titoloNotizia" required="true" pattern=".{5,128}" required title="da 5 a 128 caratteri">
+                                            <input id = "titoloNotizia" class="form-control" type="text" name="nome" required="true" pattern=".{5,128}" required title="da 5 a 128 caratteri">
                                         </div>
 
                                         <div class="form-group">
                                             <label for="corpoNotizia">Articolo</label>
-                                            <textarea id = "corpoNotizia" class="form-control" rows="6" name="corpoNotizia" required="true" pattern=".{20,20000}" required title="da 20 a 20000 caratteri"></textarea>
+                                            <textarea id = "corpoNotizia" class="form-control" rows="6" name="articolo" required="true" pattern=".{20,20000}" required title="da 20 a 20000 caratteri"></textarea>
                                         </div> 
                                         <button type="submit" class="btn btn-default">Submit</button>
                                     </form:form>

@@ -23,7 +23,7 @@ public class ProxyNotiziaHandler implements NotiziaHandler {
     private ArrayList<Notizia> notiziaCucina;
     private ArrayList<Notizia> notiziaDecorazioni;
     private ArrayList<Notizia> notiziaCondominio;
-    private final boolean isDirty; //se si aggiungi una nuova notizia nella DB, dirty = true
+    private boolean dirty; //se si aggiungi una nuova notizia nella DB, dirty = true
     private final RealNotiziaHandler realHandler;
 
     //singleton Instance
@@ -39,7 +39,7 @@ public class ProxyNotiziaHandler implements NotiziaHandler {
         this.notiziaCucina = null;
         this.notiziaDecorazioni = null;
         this.notiziaCondominio = null;
-        this.isDirty = false;
+        this.dirty = false;
         this.realHandler = new RealNotiziaHandler();
     }
 
@@ -62,7 +62,7 @@ public class ProxyNotiziaHandler implements NotiziaHandler {
 
     @Override
     public synchronized ArrayList<Notizia> getNotiziaHome() {
-        if (this.notiziaHome == null || isDirty) {
+        if (this.notiziaHome == null || dirty) {
             System.out.println("Sto accedendo al DB");
             notiziaHome = realHandler.getNotiziaHome();
         } else {
@@ -73,7 +73,7 @@ public class ProxyNotiziaHandler implements NotiziaHandler {
 
     @Override
     public synchronized ArrayList<Notizia> getNotiziaRistrutturazione() {
-        if (this.notiziaRistrutturazione == null || isDirty) {
+        if (this.notiziaRistrutturazione == null || dirty) {
             System.out.println("Sto accedendo al DB");
             notiziaRistrutturazione = realHandler.getNotiziaHome();
         } else {
@@ -84,7 +84,7 @@ public class ProxyNotiziaHandler implements NotiziaHandler {
 
     @Override
     public synchronized ArrayList<Notizia> getNotiziaBagno() {
-        if (this.notiziaBagno == null || isDirty) {
+        if (this.notiziaBagno == null || dirty) {
             System.out.println("Sto accedendo al DB");
             notiziaBagno = realHandler.getNotiziaHome();
         } else {
@@ -95,7 +95,7 @@ public class ProxyNotiziaHandler implements NotiziaHandler {
 
     @Override
     public synchronized ArrayList<Notizia> getNotiziaAppartamenti() {
-        if (this.notiziaAppartamenti == null || isDirty) {
+        if (this.notiziaAppartamenti == null || dirty) {
             System.out.println("Sto accedendo al DB");
             notiziaAppartamenti = realHandler.getNotiziaHome();
         } else {
@@ -106,7 +106,7 @@ public class ProxyNotiziaHandler implements NotiziaHandler {
 
     @Override
     public synchronized ArrayList<Notizia> getNotiziaCucina() {
-        if (this.notiziaCucina == null || isDirty) {
+        if (this.notiziaCucina == null || dirty) {
             System.out.println("Sto accedendo al DB");
             notiziaCucina = realHandler.getNotiziaHome();
         } else {
@@ -117,7 +117,7 @@ public class ProxyNotiziaHandler implements NotiziaHandler {
 
     @Override
     public synchronized ArrayList<Notizia> getNotiziaDecorazioni() {
-        if (this.notiziaDecorazioni == null || isDirty) {
+        if (this.notiziaDecorazioni == null || dirty) {
             System.out.println("Sto accedendo al DB");
             notiziaDecorazioni = realHandler.getNotiziaHome();
         } else {
@@ -128,7 +128,7 @@ public class ProxyNotiziaHandler implements NotiziaHandler {
 
     @Override
     public synchronized ArrayList<Notizia> getNotiziaCondominio() {
-        if (this.notiziaCondominio == null || isDirty) {
+        if (this.notiziaCondominio == null || dirty) {
             System.out.println("Sto accedendo al DB");
             notiziaCondominio = realHandler.getNotiziaHome();
         } else {
@@ -136,5 +136,14 @@ public class ProxyNotiziaHandler implements NotiziaHandler {
         }
         return notiziaCondominio;
     }
+
+    public boolean IsDirty() {
+        return dirty;
+    }
+
+    public void setDirty(boolean isDirty) {
+        this.dirty = isDirty;
+    }
+
 
 }

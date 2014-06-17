@@ -5,17 +5,24 @@
  */
 package com.beans;
 
+import com.beans.NotiziaProxy.NotiziaHandler;
 import com.service.DBController;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 /**
  *
  * @author SashaAlexandru
  */
 public class Notizia {
+    
+    @Autowired
+    @Qualifier("proxy")
+    NotiziaHandler notiziaHandler;
 
     private static final Logger LOG = Logger.getLogger(Notizia.class.getName());
     private String nome;
@@ -50,6 +57,8 @@ public class Notizia {
         this.priorita = priorita;
     }
 
+    public Notizia() {
+    }
 
     public boolean salva() {
         boolean result = false;
@@ -73,6 +82,8 @@ public class Notizia {
                         System.out.println("INFO DATA:" + this.getClass() + "." + Thread.currentThread().getStackTrace()[1].getMethodName() + ": Query eseguita: " + queryInsertImgNotizia);
                     }
                 }
+                //notiziaHandler.setDirty(true);
+                //System.out.println("is dirty " + notiziaHandler.IsDirty());
                 return true;
             }//se newID = -1 allora è stato un errore nel inserimento nel db;
             else {
@@ -82,6 +93,8 @@ public class Notizia {
         } catch (SQLException ex) {
             LOG.severe(ex.getMessage());
         }
+        // notiziaHandler.setDirty(result);
+        //System.out.println("is dirty " + notiziaHandler.IsDirty());
         return result;
     }
 

@@ -47,7 +47,7 @@ public class CreateTables {
                     + "                                <li>Eliminazione delle barriere architettoniche</li>\n"
                     + "                            </ol>\n"
                     + "                            <p class=\"text-muted\"><small>articolo visto su <a href=\"http://www.altroconsumo.it\">www.altroconsumo.it</a></small></p>",
-                    Tipo.HOME, 9,
+                    Tipo.HOME.getValue(), 9,
                     (new Timestamp(new java.util.Date().getTime()))
             );
             Notizia home1 = new Notizia("<h3>Ristrutturare casa: <small>guida agli incentivi</small></h3> ",
@@ -67,7 +67,7 @@ public class CreateTables {
                     + "                                <li>Eliminazione delle barriere architettoniche</li>\n"
                     + "                            </ol>\n"
                     + "                            <p class=\"text-muted\"><small>articolo visto su <a href=\"http://www.altroconsumo.it\">www.altroconsumo.it</a></small></p>",
-                    Tipo.HOME, 6,
+                    Tipo.HOME.getValue(), 6,
                     (new Timestamp(new java.util.Date().getTime()))
             );
             Notizia home2 = new Notizia("<h3>Ristrutturare casa: <small>guida agli incentivi</small></h3> ",
@@ -87,7 +87,7 @@ public class CreateTables {
                     + "                                <li>Eliminazione delle barriere architettoniche</li>\n"
                     + "                            </ol>\n"
                     + "                            <p class=\"text-muted\"><small>articolo visto su <a href=\"http://www.altroconsumo.it\">www.altroconsumo.it</a></small></p>",
-                    Tipo.HOME, 9,
+                    Tipo.HOME.getValue(), 9,
                     (new Timestamp(new java.util.Date().getTime()))
             );
             Notizia home3 = new Notizia("<h3>Ristrutturare casa: <small>guida agli incentivi</small></h3> ",
@@ -107,7 +107,7 @@ public class CreateTables {
                     + "                                <li>Eliminazione delle barriere architettoniche</li>\n"
                     + "                            </ol>\n"
                     + "                            <p class=\"text-muted\"><small>articolo visto su <a href=\"http://www.altroconsumo.it\">www.altroconsumo.it</a></small></p>",
-                    Tipo.HOME, 1,
+                    Tipo.HOME.getValue(), 1,
                     (new Timestamp(new java.util.Date().getTime()))
             );
             Notizia home4 = new Notizia("<h3>Ristrutturare casa: <small>guida agli incentivi</small></h3> ",
@@ -127,7 +127,7 @@ public class CreateTables {
                     + "                                <li>Eliminazione delle barriere architettoniche</li>\n"
                     + "                            </ol>\n"
                     + "                            <p class=\"text-muted\"><small>articolo visto su <a href=\"http://www.altroconsumo.it\">www.altroconsumo.it</a></small></p>",
-                    Tipo.HOME, 1,
+                    Tipo.HOME.getValue(), 1,
                     (new Timestamp(new java.util.Date().getTime()))
             );
             Notizia home5 = new Notizia("<h3>Ristrutturare casa: <small>guida agli incentivi</small></h3> ",
@@ -147,7 +147,7 @@ public class CreateTables {
                     + "                                <li>Eliminazione delle barriere architettoniche</li>\n"
                     + "                            </ol>\n"
                     + "                            <p class=\"text-muted\"><small>articolo visto su <a href=\"http://www.altroconsumo.it\">www.altroconsumo.it</a></small></p>",
-                    Tipo.HOME, 4,
+                    Tipo.HOME.getValue(), 4,
                     (new Timestamp(new java.util.Date().getTime()))
             );
             Notizia home6 = new Notizia("<h3>Ristrutturare casa: <small>guida agli incentivi</small></h3> ",
@@ -167,7 +167,7 @@ public class CreateTables {
                     + "                                <li>Eliminazione delle barriere architettoniche</li>\n"
                     + "                            </ol>\n"
                     + "                            <p class=\"text-muted\"><small>articolo visto su <a href=\"http://www.altroconsumo.it\">www.altroconsumo.it</a></small></p>",
-                    Tipo.HOME, 3,
+                    Tipo.HOME.getValue(), 3,
                     (new Timestamp(new java.util.Date().getTime()))
             );
             home.salva();

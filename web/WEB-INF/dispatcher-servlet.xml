@@ -82,6 +82,6 @@
         </property>
     </bean>
     
-    <!-- Definition for logging aspect -->
+    <!-- Definition for aspect -->
    <bean id="notiziaSortAOP" class="com.service.NotiziaSortAOP"/> 
 </beans>

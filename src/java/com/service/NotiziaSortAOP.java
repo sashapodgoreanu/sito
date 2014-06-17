@@ -30,6 +30,7 @@ public class NotiziaSortAOP {
      */
     @Pointcut("execution(* com.beans.NotiziaProxy.NotiziaHandler.*(..))")
     //@Pointcut("execution(* com.controller.*.*(..))")
+    //@Pointcut("execution(* com.beans.Notizia.salva(..))")
     private void selectAll() {
     }
 
