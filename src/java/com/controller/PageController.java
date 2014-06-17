@@ -9,7 +9,6 @@ import com.beans.WebAdmin;
 import com.controller.SEOUtil.Url;
 import com.service.DBController;
 import java.sql.SQLException;
-import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -76,8 +75,6 @@ public class PageController {
     @RequestMapping(value = {"azienda/"}, method = RequestMethod.GET)
     public ModelAndView azienda() {
         ModelAndView mav = new ModelAndView("chi_siamo");//add view - chi_siamo.jsp 
-        //ProxyNotiziaHandler proxy = ProxyNotiziaHandler.getInstance();
-        System.out.println(Arrays.toString(notiziaHandler.getNotiziaHome().toArray()));
         return mav;
     }
 
