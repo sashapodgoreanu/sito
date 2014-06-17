@@ -38,11 +38,12 @@ public class RealNotiziaHandler implements NotiziaHandler {
     public ArrayList<Notizia> getNotiziaHome() {
         String query = "SELECT * FROM NOTIZIA WHERE TIPO ='" + Tipo.HOME + "'";
         QueryResult qr = null;
+        
         ArrayList<Notizia> notizia = new ArrayList<>();
         try {
             qr = db.executeQuery(query);
             while (qr.next()) {
-                Notizia toAdd = new Notizia(qr.getString("NOME"), qr.getString("ARTICOLO"), qr.getString("TIPO"), qr.getDate("DATA_CARICAMENTO"));
+                Notizia toAdd = new Notizia(qr.getString("NOME"), qr.getString("ARTICOLO"), qr.getString("TIPO"), qr.getInt("PRIORITA"), qr.getDate("DATA_CARICAMENTO"));
                 notizia.add(toAdd);
             }
         } catch (SQLException ex) {

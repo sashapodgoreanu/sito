@@ -5,11 +5,13 @@ package com.beans.NotiziaProxy;
 
 import com.beans.Notizia;
 import java.util.ArrayList;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author SashaAlexandru
  */
+@Component(value = "proxy")
 public class ProxyNotiziaHandler implements NotiziaHandler {
 
     private ArrayList<Notizia> notiziaPopulare;
@@ -25,9 +27,9 @@ public class ProxyNotiziaHandler implements NotiziaHandler {
     private final RealNotiziaHandler realHandler;
 
     //singleton Instance
-    private static ProxyNotiziaHandler instance;
+    //private static ProxyNotiziaHandler instance;
 
-    private ProxyNotiziaHandler() {
+    public ProxyNotiziaHandler() {
         this.notiziaPopulare = null;
         this.notiziaNuova = null;
         this.notiziaHome = null;
@@ -41,13 +43,12 @@ public class ProxyNotiziaHandler implements NotiziaHandler {
         this.realHandler = new RealNotiziaHandler();
     }
 
-    public static synchronized ProxyNotiziaHandler getInstance() {
-        if (instance == null) {
+    /*public static synchronized ProxyNotiziaHandler getInstance() {        if (instance == null) {
             instance = new ProxyNotiziaHandler();
             System.out.println("Creating a new instance of ProxyNotiziaHandler");
         }
         return instance;
-    }
+    }*/
 
     @Override
     public synchronized ArrayList<Notizia> getNotiziaPopulare() {

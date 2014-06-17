@@ -127,6 +127,7 @@ public final class DBController {
                 + "NOME VARCHAR (128) NOT NULL,"
                 + "ARTICOLO VARCHAR (20000) NOT NULL,"
                 + "TIPO VARCHAR (128) NOT NULL,"
+                + "PRIORITA INTEGER NOT NULL,"
                 + "DATA_CARICAMENTO TIMESTAMP NOT NULL,"
                 + "NUM_VIS INTEGER"
                 + ")";

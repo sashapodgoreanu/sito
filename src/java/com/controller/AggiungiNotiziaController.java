@@ -8,7 +8,6 @@ package com.controller;
 import com.beans.Immagine;
 import com.beans.MultiFileUpload;
 import com.beans.Notizia;
-import com.beans.NotiziaProxy.ProxyNotiziaHandler;
 import com.beans.WebAdmin;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -117,7 +116,7 @@ public class AggiungiNotiziaController {
     @RequestMapping(value = "aggiungi-notizia/", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView aggiungiNotizia() {
         //System.out.println("imagesPath  " + imagesPath);
-        ProxyNotiziaHandler proxy = ProxyNotiziaHandler.getInstance();
+        //ProxyNotiziaHandler proxy = ProxyNotiziaHandler.getInstance();
         //webAdmin = (WebAdmin) session.getAttribute("webAdminSession");
         if (!webAdmin.isValid()) {
             loginController.redirectLogin();

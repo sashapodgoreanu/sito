@@ -22,6 +22,7 @@ public class Notizia {
     private int id;
     private String articolo;
     private String tipo;
+    private int priorita;
     private Date dataCaricamento;
     private int numVis;
     private int popularita;
@@ -34,6 +35,21 @@ public class Notizia {
         this.dataCaricamento = dataCaricamento;
         immagini = new ArrayList<>();
     }
+
+    public Notizia(String nome, String testo, String tipo, int priorita, Date dataCaricamento) {
+        this.nome = nome;
+        this.articolo = testo;
+        this.tipo = tipo;
+        this.priorita = priorita;
+        this.dataCaricamento = dataCaricamento;
+        immagini = new ArrayList<>();
+    }
+
+    public Notizia(String nome, int priorita) {
+        this.nome = nome;
+        this.priorita = priorita;
+    }
+
 
     public boolean salva() {
         boolean result = false;
@@ -80,13 +96,15 @@ public class Notizia {
     }
 
     private String querryInsert() {
-        String queryInsert = "INSERT INTO NOTIZIA(NOME,ARTICOLO,TIPO,DATA_CARICAMENTO)"
+        String queryInsert = "INSERT INTO NOTIZIA(NOME,ARTICOLO,TIPO,PRIORITA,DATA_CARICAMENTO)"
                 + "VALUES('"
                 + this.getNome()
                 + "','"
                 + this.getTesto()
                 + "','"
                 + this.tipo
+                + "','"
+                + this.priorita
                 + "','"
                 + this.getDataCaricamento()
                 + "')";
@@ -145,9 +163,45 @@ public class Notizia {
         this.dataCaricamento = dataCaricamento;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getArticolo() {
+        return articolo;
+    }
+
+    public void setArticolo(String articolo) {
+        this.articolo = articolo;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public int getPriorita() {
+        return priorita;
+    }
+
+    public void setPriorita(int priorita) {
+        this.priorita = priorita;
+    }
+
     @Override
     public String toString() {
-        return "Notizia{" + "nome=" + nome + ", id=" + id + ", testo=" + articolo + ", tipo=" + tipo + ", dataCaricamento=" + dataCaricamento + ",\n immagini=" + immagini.toString() + '}';
+        if (immagini != null) {
+            return "Notizia{" + "nome=" + nome + ", id=" + id + ", testo=" + articolo + ", tipo=" + tipo + ", priorita=" + priorita + ", dataCaricamento=" + dataCaricamento + ",\n immagini=" + immagini.toString() + '}';
+        } else {
+            return "Notizia{" + "nome=" + nome + ", id=" + id + ", testo=" + articolo + ", tipo=" + tipo + ", priorita=" + priorita + ", dataCaricamento=" + dataCaricamento + '}';
+        }
     }
 
 

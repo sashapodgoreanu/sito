@@ -28,4 +28,20 @@
     <welcome-file-list>
         <welcome-file></welcome-file>
     </welcome-file-list>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/page-not-found.html</location>
+    </error-page>
+    <error-page>
+        <error-code>400</error-code>
+        <location>/bad-request.html</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/internat-error.html</location>
+    </error-page>
+    <error-page>
+        <error-code>405</error-code>
+        <location>/not-supported-method.html</location>
+    </error-page>
 </web-app>

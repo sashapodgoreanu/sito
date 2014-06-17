@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.beans.NotiziaProxy;
 
 import com.beans.Notizia;
@@ -13,6 +12,7 @@ import java.util.ArrayList;
  *
  * @author SashaAlexandru
  */
+
 public interface NotiziaHandler {
 
     public ArrayList<Notizia> getNotiziaPopulare();
@@ -32,6 +32,5 @@ public interface NotiziaHandler {
     public ArrayList<Notizia> getNotiziaDecorazioni();
 
     public ArrayList<Notizia> getNotiziaCondominio();
-
 
 }

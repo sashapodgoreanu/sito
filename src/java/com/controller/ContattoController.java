@@ -55,7 +55,7 @@ public class ContattoController {
             }
             model.addAttribute("contact", new Contatto());//if no error then create new contact
         }
-        return "redirect:contatti";
+        return "contatti";
     }
 
     @RequestMapping(value = {"contatti/"}, method = RequestMethod.GET)

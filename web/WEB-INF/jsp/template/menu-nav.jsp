@@ -73,7 +73,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Informazioni<b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Mappa del Sito</a></li>
+                        <li><a href="${pageContext.request.getContextPath()}/sitemap.xml">Mappa del Sito</a></li>
                         <li><a href="${pageContext.request.getContextPath()}/note-legali/">Note legali/Privacy</a></li>
                             <c:choose>
                                 <c:when test = "${webAdminSession.valid == true}">
