@@ -6,8 +6,8 @@
 
 package com.service;
 
-import com.beans.Notizia;
-import com.beans.NotiziaConPrioritaComparator;
+import com.beans.Notizia.Notizia;
+import com.beans.Notizia.NotiziaConPrioritaComparator;
 import java.util.ArrayList;
 import java.util.Collections;
 import org.aspectj.lang.annotation.After;
@@ -28,7 +28,7 @@ public class NotiziaSortAOP {
      * Following is the definition for a pointcut to select all the methods
      * available. So advice will be called for all the methods.
      */
-    @Pointcut("execution(* com.beans.NotiziaProxy.NotiziaHandler.*(..))")
+    @Pointcut("execution(* com.beans.NotiziaProxy.NotiziaHandler.ProxyNotiziaHandler.*(..))")
     //@Pointcut("execution(* com.controller.*.*(..))")
     //@Pointcut("execution(* com.beans.Notizia.salva(..))")
     private void selectAll() {

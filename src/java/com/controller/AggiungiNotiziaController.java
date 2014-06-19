@@ -5,11 +5,11 @@
  */
 package com.controller;
 
-import com.beans.Immagine;
-import com.beans.Notizia;
-import com.beans.NotiziaMultifileUpload;
-import com.beans.Priorita;
-import com.beans.Tipo;
+import com.beans.Notizia.Immagine;
+import com.beans.Notizia.Notizia;
+import com.beans.Notizia.NotiziaMultifileUpload;
+import com.beans.Notizia.Priorita;
+import com.beans.Notizia.Tipo;
 import com.beans.WebAdmin;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -49,6 +49,8 @@ public class AggiungiNotiziaController {
     LoginController loginController;
     @Autowired
     Priorita priorita;
+    @Autowired
+    Notizia notizia;
 
     //path dell http://www.damicicostruzioni.it/images/ 
     //private static final String imagesPath = "C:/PROGRA~1/APACHE~1/TOMCAT~1.34/instances/tomcat7.0.34_835/images";
@@ -75,7 +77,12 @@ public class AggiungiNotiziaController {
          } else {
             session.setAttribute("idNotizia", false);
         }
-        Notizia notizia = new Notizia(mfu.getNome(), mfu.getArticolo(), mfu.getTipo(), (new Timestamp(new java.util.Date().getTime())));
+        notizia.setNome(mfu.getNome());
+        notizia.setArticolo(mfu.getArticolo());
+        notizia.setTipo(mfu.getTipo());
+        notizia.setDataCaricamento(new Timestamp(new java.util.Date().getTime()));
+
+        //Notizia notizia = new Notizia(mfu.getNome(), mfu.getArticolo(), mfu.getTipo(), );
         List<MultipartFile> filePartsList = mfu.getFiles();
         boolean success = true;
         for (MultipartFile filePart : filePartsList) {

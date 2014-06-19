@@ -1,7 +1,7 @@
 package com.service;
 
-import com.beans.Notizia;
-import com.beans.Tipo;
+import com.beans.Notizia.Notizia;
+import com.beans.Notizia.Tipo;
 import com.beans.WebAdmin;
 import java.sql.SQLException;
 import java.sql.Timestamp;

@@ -3,27 +3,30 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.beans;
+package com.beans.Notizia;
 
-import com.beans.NotiziaProxy.NotiziaHandler;
+import com.beans.Notizia.NotiziaHandler;
 import com.service.DBController;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Observable;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author SashaAlexandru
  */
-public class Notizia {
+@Component
+@Scope("prototype")
+public class Notizia extends Observable {
+    
     
     @Autowired
-    @Qualifier("proxy")
     NotiziaHandler notiziaHandler;
-
     private static final Logger LOG = Logger.getLogger(Notizia.class.getName());
     private String nome;
     private int id;
@@ -35,12 +38,17 @@ public class Notizia {
     private int popularita;
     public ArrayList<Immagine> immagini;
 
+    public Notizia() {
+        immagini = new ArrayList<>();
+    }
+
     public Notizia(String nome, String testo, String tipo, Date dataCaricamento) {
         this.nome = nome;
         this.articolo = testo;
         this.tipo = tipo;
         this.dataCaricamento = dataCaricamento;
         immagini = new ArrayList<>();
+       
     }
 
     public Notizia(String nome, String testo, String tipo, int priorita, Date dataCaricamento) {
@@ -57,11 +65,12 @@ public class Notizia {
         this.priorita = priorita;
     }
 
-    public Notizia() {
-    }
-
     public boolean salva() {
+        System.out.println("Notizia Handler***********" + notiziaHandler);
         boolean result = false;
+        this.addObserver(notiziaHandler);//add an observer
+        setChanged();
+        notifyObservers();
         DBController dbc = DBController.getInstance();
         String queryInsert = querryInsert();
         try {
@@ -82,9 +91,6 @@ public class Notizia {
                         System.out.println("INFO DATA:" + this.getClass() + "." + Thread.currentThread().getStackTrace()[1].getMethodName() + ": Query eseguita: " + queryInsertImgNotizia);
                     }
                 }
-                //notiziaHandler.setDirty(true);
-                //System.out.println("is dirty " + notiziaHandler.IsDirty());
-                return true;
             }//se newID = -1 allora è stato un errore nel inserimento nel db;
             else {
                 LOG.severe("Errore: non è stato possibile salvare la notizia");
@@ -93,8 +99,6 @@ public class Notizia {
         } catch (SQLException ex) {
             LOG.severe(ex.getMessage());
         }
-        // notiziaHandler.setDirty(result);
-        //System.out.println("is dirty " + notiziaHandler.IsDirty());
         return result;
     }
 
@@ -216,6 +220,4 @@ public class Notizia {
             return "Notizia{" + "nome=" + nome + ", id=" + id + ", testo=" + articolo + ", tipo=" + tipo + ", priorita=" + priorita + ", dataCaricamento=" + dataCaricamento + '}';
         }
     }
-
-
 }

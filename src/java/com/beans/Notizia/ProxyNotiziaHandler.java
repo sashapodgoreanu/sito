@@ -1,9 +1,8 @@
 /*
  Classe SINGLETON
  */
-package com.beans.NotiziaProxy;
+package com.beans.Notizia;
 
-import com.beans.Notizia;
 import java.util.ArrayList;
 import org.springframework.stereotype.Component;
 
@@ -12,22 +11,18 @@ import org.springframework.stereotype.Component;
  * @author SashaAlexandru
  */
 @Component(value = "proxy")
-public class ProxyNotiziaHandler implements NotiziaHandler {
+public class ProxyNotiziaHandler extends NotiziaHandler{
 
-    private ArrayList<Notizia> notiziaPopulare;
-    private ArrayList<Notizia> notiziaNuova;
-    private ArrayList<Notizia> notiziaHome;
-    private ArrayList<Notizia> notiziaRistrutturazione;
-    private ArrayList<Notizia> notiziaBagno;
-    private ArrayList<Notizia> notiziaAppartamenti;
-    private ArrayList<Notizia> notiziaCucina;
-    private ArrayList<Notizia> notiziaDecorazioni;
-    private ArrayList<Notizia> notiziaCondominio;
-    private boolean dirty; //se si aggiungi una nuova notizia nella DB, dirty = true
     private final RealNotiziaHandler realHandler;
-
-    //singleton Instance
-    //private static ProxyNotiziaHandler instance;
+    protected ArrayList<Notizia> notiziaPopulare;
+    protected ArrayList<Notizia> notiziaNuova;
+    protected ArrayList<Notizia> notiziaHome;
+    protected ArrayList<Notizia> notiziaRistrutturazione;
+    protected ArrayList<Notizia> notiziaBagno;
+    protected ArrayList<Notizia> notiziaAppartamenti;
+    protected ArrayList<Notizia> notiziaCucina;
+    protected ArrayList<Notizia> notiziaDecorazioni;
+    protected ArrayList<Notizia> notiziaCondominio;
 
     public ProxyNotiziaHandler() {
         this.notiziaPopulare = null;
@@ -39,16 +34,9 @@ public class ProxyNotiziaHandler implements NotiziaHandler {
         this.notiziaCucina = null;
         this.notiziaDecorazioni = null;
         this.notiziaCondominio = null;
-        this.dirty = false;
-        this.realHandler = new RealNotiziaHandler();
+        super.dirty = false;
+        realHandler = new RealNotiziaHandler();
     }
-
-    /*public static synchronized ProxyNotiziaHandler getInstance() {        if (instance == null) {
-            instance = new ProxyNotiziaHandler();
-            System.out.println("Creating a new instance of ProxyNotiziaHandler");
-        }
-        return instance;
-    }*/
 
     @Override
     public synchronized ArrayList<Notizia> getNotiziaPopulare() {
@@ -65,6 +53,7 @@ public class ProxyNotiziaHandler implements NotiziaHandler {
         if (this.notiziaHome == null || dirty) {
             System.out.println("Sto accedendo al DB");
             notiziaHome = realHandler.getNotiziaHome();
+            dirty = false;
         } else {
             System.out.println("Sto carricando notizia dal proxy");
         }
@@ -76,6 +65,7 @@ public class ProxyNotiziaHandler implements NotiziaHandler {
         if (this.notiziaRistrutturazione == null || dirty) {
             System.out.println("Sto accedendo al DB");
             notiziaRistrutturazione = realHandler.getNotiziaHome();
+            dirty = false;
         } else {
             System.out.println("Sto carricando notizia dal proxy");
         }
@@ -87,6 +77,7 @@ public class ProxyNotiziaHandler implements NotiziaHandler {
         if (this.notiziaBagno == null || dirty) {
             System.out.println("Sto accedendo al DB");
             notiziaBagno = realHandler.getNotiziaHome();
+            dirty = false;
         } else {
             System.out.println("Sto carricando notizia dal proxy");
         }
@@ -98,6 +89,7 @@ public class ProxyNotiziaHandler implements NotiziaHandler {
         if (this.notiziaAppartamenti == null || dirty) {
             System.out.println("Sto accedendo al DB");
             notiziaAppartamenti = realHandler.getNotiziaHome();
+            dirty = false;
         } else {
             System.out.println("Sto carricando notizia dal proxy");
         }
@@ -109,6 +101,7 @@ public class ProxyNotiziaHandler implements NotiziaHandler {
         if (this.notiziaCucina == null || dirty) {
             System.out.println("Sto accedendo al DB");
             notiziaCucina = realHandler.getNotiziaHome();
+            dirty = false;
         } else {
             System.out.println("Sto carricando notizia dal proxy");
         }
@@ -120,6 +113,7 @@ public class ProxyNotiziaHandler implements NotiziaHandler {
         if (this.notiziaDecorazioni == null || dirty) {
             System.out.println("Sto accedendo al DB");
             notiziaDecorazioni = realHandler.getNotiziaHome();
+            dirty = false;
         } else {
             System.out.println("Sto carricando notizia dal proxy");
         }
@@ -131,19 +125,12 @@ public class ProxyNotiziaHandler implements NotiziaHandler {
         if (this.notiziaCondominio == null || dirty) {
             System.out.println("Sto accedendo al DB");
             notiziaCondominio = realHandler.getNotiziaHome();
+            dirty = false;
         } else {
             System.out.println("Sto carricando notizia dal proxy");
         }
         return notiziaCondominio;
     }
 
-    public boolean IsDirty() {
-        return dirty;
-    }
-
-    public void setDirty(boolean isDirty) {
-        this.dirty = isDirty;
-    }
-
-
+    
 }

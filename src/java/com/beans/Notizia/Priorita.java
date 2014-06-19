@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.beans;
+package com.beans.Notizia;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;

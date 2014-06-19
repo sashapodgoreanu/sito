@@ -4,17 +4,16 @@
  * and open the template in the editor.
  */
 
-package com.beans.NotiziaProxy;
+package com.beans.Notizia;
 
-import com.beans.Notizia;
-import com.beans.Tipo;
 import com.service.DBController;
 import com.service.QueryResult;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.logging.Logger;
 
-public class RealNotiziaHandler implements NotiziaHandler {
+public class RealNotiziaHandler extends NotiziaHandler {
 
     DBController db;
     private static final Logger LOG = Logger.getLogger(RealNotiziaHandler.class.getName());
@@ -51,6 +50,7 @@ public class RealNotiziaHandler implements NotiziaHandler {
         } catch (Exception ex) {
             LOG.severe(ex.getMessage());
         }
+        Collections.sort(notizia, new NotiziaConPrioritaComparator());
         return notizia;
     }
 
@@ -70,6 +70,7 @@ public class RealNotiziaHandler implements NotiziaHandler {
         } catch (Exception ex) {
             LOG.severe(ex.getMessage());
         }
+        Collections.sort(notizia, new NotiziaConPrioritaComparator());
         return notizia;
     }
 
@@ -89,6 +90,7 @@ public class RealNotiziaHandler implements NotiziaHandler {
         } catch (Exception ex) {
             LOG.severe(ex.getMessage());
         }
+        Collections.sort(notizia, new NotiziaConPrioritaComparator());
         return notizia;
     }
 
@@ -108,6 +110,7 @@ public class RealNotiziaHandler implements NotiziaHandler {
         } catch (Exception ex) {
             LOG.severe(ex.getMessage());
         }
+        Collections.sort(notizia, new NotiziaConPrioritaComparator());
         return notizia;
     }
 
@@ -127,6 +130,7 @@ public class RealNotiziaHandler implements NotiziaHandler {
         } catch (Exception ex) {
             LOG.severe(ex.getMessage());
         }
+        Collections.sort(notizia, new NotiziaConPrioritaComparator());
         return notizia;
     }
 
@@ -146,6 +150,7 @@ public class RealNotiziaHandler implements NotiziaHandler {
         } catch (Exception ex) {
             LOG.severe(ex.getMessage());
         }
+        Collections.sort(notizia, new NotiziaConPrioritaComparator());
         return notizia;
     }
 
@@ -165,18 +170,7 @@ public class RealNotiziaHandler implements NotiziaHandler {
         } catch (Exception ex) {
             LOG.severe(ex.getMessage());
         }
+        Collections.sort(notizia, new NotiziaConPrioritaComparator());
         return notizia;
     }
-
-    @Override
-    public boolean IsDirty() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void setDirty(boolean isDirty) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-
 }

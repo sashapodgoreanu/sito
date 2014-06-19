@@ -6,6 +6,8 @@
 
 package com.beans;
 
+import com.beans.Notizia.NotiziaConPrioritaComparator;
+import com.beans.Notizia.Notizia;
 import java.util.ArrayList;
 import java.util.Collections;
 import org.junit.Test;

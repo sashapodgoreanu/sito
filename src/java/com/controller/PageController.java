@@ -4,7 +4,7 @@
  */
 package com.controller;
 
-import com.beans.NotiziaProxy.NotiziaHandler;
+import com.beans.Notizia.NotiziaHandler;
 import com.beans.WebAdmin;
 import com.controller.SEOUtil.Url;
 import com.service.DBController;

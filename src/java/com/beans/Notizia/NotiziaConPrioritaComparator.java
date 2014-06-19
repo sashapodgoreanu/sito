@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.beans;
+package com.beans.Notizia;
 
+import com.beans.Notizia.Notizia;
 import java.util.Comparator;
 
 /**

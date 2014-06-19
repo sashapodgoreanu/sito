@@ -1,6 +1,6 @@
 package com.service;
 
-import com.beans.Immagine;
+import com.beans.Notizia.Immagine;
 import com.beans.WebAdmin;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
