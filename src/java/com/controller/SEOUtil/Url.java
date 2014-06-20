@@ -20,6 +20,7 @@ public class Url {
     public static final String azienda = "azienda";
     public static final String contatti = "contatti";
     public static final String noteLegali = "note-legali";
+    public static final String POSA_PAVIMENTI = "posa-pavimenti";
 
     //public static final String aggiungiNotizia = "aggiungi-notizia";
     //public static final String login = "login";

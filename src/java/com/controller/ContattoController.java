@@ -25,13 +25,13 @@ import org.springframework.web.servlet.ModelAndView;
 public class ContattoController {
 
     @Autowired
-    ContattoValidator contattoValidation;
+    ContattoValidator contattoValidator;
     @Autowired    
     GmailMail gmailMail;
 
     @RequestMapping(value = {"contatti/send-contact"}, method = {RequestMethod.POST})
     public String sendContact(@ModelAttribute("contact") Contatto contact, BindingResult bindingResult, Model model) {
-        contattoValidation.validate(contact, bindingResult); //bindingResult needs to be filled with errors if any. 
+        contattoValidator.validate(contact, bindingResult); //bindingResult needs to be filled with errors if any. 
         if (bindingResult.hasErrors()) {
             return "contatti";
         } else {

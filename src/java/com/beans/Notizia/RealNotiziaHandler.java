@@ -36,8 +36,13 @@ public class RealNotiziaHandler extends NotiziaHandler {
     @Override
     public ArrayList<Notizia> getNotiziaHome() {
         String query = "SELECT * FROM NOTIZIA WHERE TIPO ='" + Tipo.HOME + "'";
+        ArrayList<Notizia> notizia = getNotizia(query);
+        Collections.sort(notizia, new NotiziaConPrioritaComparator());
+        return notizia;
+    }
+
+    private ArrayList<Notizia> getNotizia(String query) {
         QueryResult qr = null;
-        
         ArrayList<Notizia> notizia = new ArrayList<>();
         try {
             qr = db.executeQuery(query);
@@ -50,9 +55,9 @@ public class RealNotiziaHandler extends NotiziaHandler {
         } catch (Exception ex) {
             LOG.severe(ex.getMessage());
         }
-        Collections.sort(notizia, new NotiziaConPrioritaComparator());
         return notizia;
     }
+
 
     @Override
     public ArrayList<Notizia> getNotiziaRistrutturazione() {
@@ -170,6 +175,14 @@ public class RealNotiziaHandler extends NotiziaHandler {
         } catch (Exception ex) {
             LOG.severe(ex.getMessage());
         }
+        Collections.sort(notizia, new NotiziaConPrioritaComparator());
+        return notizia;
+    }
+
+    @Override
+    public ArrayList<Notizia> getNotiziaPosaPavimenti() {
+        String query = "SELECT * FROM NOTIZIA WHERE TIPO ='" + Tipo.POSA_PAVIMENTI + "'";
+        ArrayList<Notizia> notizia = getNotizia(query);
         Collections.sort(notizia, new NotiziaConPrioritaComparator());
         return notizia;
     }

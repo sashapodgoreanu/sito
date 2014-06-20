@@ -81,9 +81,8 @@
             </props>
         </property>
     </bean>
-    
-    <bean id="staticSpringApplicationContext" class="com.service.StaticSpringApplicationContext"/>
-    
+   
+    <!--bean id="staticSpringApplicationContext" class="com.service.StaticSpringApplicationContext"/-->
     <!-- Definition for aspect -->
    <!--bean id="notiziaSortAOP" class="com.service.NotiziaSortAOP"/--> 
 </beans>

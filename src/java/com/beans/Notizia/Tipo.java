@@ -20,7 +20,9 @@ public enum Tipo {
     APPARTAMENTO("Appartamento"),
     AZIENDA("Azienda"),
     DECORAZIONI("Decorazioni"),
-    CONDOMINIO("Condominio");
+    CONDOMINIO("Condominio"),
+    POSA_PAVIMENTI("Posa_Pavimenti"),
+    Per_il_Test("Test");
 
     private String value;
 

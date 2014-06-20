@@ -47,12 +47,9 @@ public class PageController {
     }
 
     @RequestMapping(value = {"index/"}, method = RequestMethod.GET)
-    public ModelAndView wellcome(HttpSession session) {
-        String h = "Heloooo";
-        session.setAttribute("heloString", h);
+    public ModelAndView wellcome() {
         ModelAndView mav = new ModelAndView("index");//add view - index.jsp
-        String s = "Hi!! This content has been produced by MyController!!";
-        mav.addObject("helloMessage", s);//add model
+        mav.addObject("notizia", notiziaHandler.getNotiziaHome());
         return mav;
     }
 
@@ -72,6 +69,25 @@ public class PageController {
         return "redirect:note-legali/";
     }
 
+    /**
+     * **************************Servizi offerti********************************
+     */
+
+    @RequestMapping(value = {"posa-pavimenti/"}, method = RequestMethod.GET)
+    public ModelAndView posaPavimenti() {
+        ModelAndView mav = new ModelAndView("posa_pavimenti");//add view - noteLegali.jsp
+        mav.addObject("notizia", notiziaHandler.getNotiziaPosaPavimenti());
+        return mav;
+    }
+
+    @RequestMapping(value = {Url.POSA_PAVIMENTI}, method = {RequestMethod.GET})
+    public String redirectPosaPavimenti() {
+        return "redirect:posa-pavimenti/";
+    }
+
+    /**
+     * ******************** End Servizi Offerti*******************************
+     */
     @RequestMapping(value = {"azienda/"}, method = RequestMethod.GET)
     public ModelAndView azienda() {
         ModelAndView mav = new ModelAndView("chi_siamo");//add view - chi_siamo.jsp 

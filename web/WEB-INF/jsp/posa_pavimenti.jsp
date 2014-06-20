@@ -17,6 +17,7 @@
         <header class="applybackground_grey">
             <c:import url="template/menu-nav.jsp"/>
             <!-- Fotorama SlideShow: Add images to <div class="fotorama"></div>. -->
+            <!-- Immagini posa pavimenti-->
             <div class ="container-fluid">
                 <div class="row">
                     <div class="col-md-1">
@@ -62,31 +63,6 @@
                 <div class="col-md-1"></div>
                 <!-- Panelli Notizia-->
                 <div class="col-md-8">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <article class="panel panel-default margin-20-top">
-                                <section class="panel-heading"><h3>Ristrutturare casa: <small>guida agli incentivi</small></h3> </section>
-                                <section class="panel-body leggitutto">
-                                    <h4 class="text-primary">RISTRUTTURAZIONI E DETRAZIONI</h4>
-                                    <h4 class ="text-info"><strong>Quanto puoi detrarre</strong></h4>
-                                    <p>È possibile detrarre dalle imposte della dichiarazione dei redditi una parte delle spese che hai sostenuto per ristrutturare casa.</p>
-                                    <ul>
-                                        <li>Per le spese sostenute prima del 25 giugno 2012 puoi detrarre il 36% della spesa, per un massimo di 48.000 euro.</li>
-                                        <li> Per le spese sostenute dal 26 giugno 2012 al 31 dicembre 2014 puoi detrarre il 50% della spesa per un massimo di 96.000 euro.<br></li>
-                                        <li>Per le spese sostenute dal 1° gennaio 2015 potrai detrarre il 40% della spesa sostenuta per un massimo di 96.000 euro.</li> 
-                                    </ul>
-                                    <h4 class ="text-info"><strong>Quali interventi sono detraibili?</strong></h4>
-                                    <ol>
-                                        <li>Interventi di manutenzione ordinaria</li>
-                                        <li>Interventi di manutenzione straordinaria</li>
-                                        <li>Ricostruzione dopo evento calamitoso</li>
-                                        <li>Eliminazione delle barriere architettoniche</li>
-                                    </ol>
-                                    <p class="text-muted"><small>articolo visto su <a href="http://www.altroconsumo.it">www.altroconsumo.it</a></small></p>
-                                </section>
-                            </article>
-                        </div>
-                    </div>
                     <c:forEach items="${notizia}" var = "notizia">
                         <div class="row">
                             <div class="col-md-12">

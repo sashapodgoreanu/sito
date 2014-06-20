@@ -40,7 +40,7 @@ public class LoginController {
         System.out.println("login" + webAdmin.toString());
         ModelAndView mav = new ModelAndView("login");
         session.setAttribute("webAdminSession", webAdmin);
-        mav.addObject("webAdminForm", new WebAdmin());
+        mav.addObject("webAdminForm", webAdmin);
         return mav;
     }
 
@@ -48,7 +48,8 @@ public class LoginController {
     public ModelAndView enter(@ModelAttribute("webAdminForm") WebAdmin webAdminForm,
             BindingResult bindingResult, HttpServletRequest request) {
         ModelAndView mav = new ModelAndView("login");
-        webAdmin = webAdminForm;
+        webAdmin.setLogin(webAdminForm.getLogin());
+        webAdmin.setPassword(webAdminForm.getPassword());
         webAdmin.authenticate();
         webAdminValidator.validate(webAdmin, bindingResult);
 
@@ -70,4 +71,5 @@ public class LoginController {
     public String redirectLogin() {
         return "redirect:login/";
     }
+    
 }

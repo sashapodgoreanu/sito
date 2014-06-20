@@ -28,7 +28,7 @@ public class NotiziaSortAOP {
      * Following is the definition for a pointcut to select all the methods
      * available. So advice will be called for all the methods.
      */
-    @Pointcut("execution(* com.beans.NotiziaProxy.NotiziaHandler.ProxyNotiziaHandler.*(..))")
+    @Pointcut("execution(* com.beans.Notizia.NotiziaHandler.*(..))")
     //@Pointcut("execution(* com.controller.*.*(..))")
     //@Pointcut("execution(* com.beans.Notizia.salva(..))")
     private void selectAll() {

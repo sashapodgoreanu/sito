@@ -41,6 +41,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">I nostri servizi <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Decorazioni interni</a></li>
+                        <li><a href="${pageContext.request.getContextPath()}/posa-pavimenti/">Posa Pavimenti</a></li>
                         <li class="divider"></li>
                         <li><a href="#">Ristrutturazioni Cucina</a></li>
                         <li><a href="#">Ristrutturazioni Bagno</a></li>

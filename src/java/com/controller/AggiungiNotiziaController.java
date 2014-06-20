@@ -11,6 +11,7 @@ import com.beans.Notizia.NotiziaMultifileUpload;
 import com.beans.Notizia.Priorita;
 import com.beans.Notizia.Tipo;
 import com.beans.WebAdmin;
+import com.service.CreateTables;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -51,7 +52,6 @@ public class AggiungiNotiziaController {
     Priorita priorita;
     @Autowired
     Notizia notizia;
-
     //path dell http://www.damicicostruzioni.it/images/ 
     //private static final String imagesPath = "C:/PROGRA~1/APACHE~1/TOMCAT~1.34/instances/tomcat7.0.34_835/images";
     @Autowired
@@ -59,7 +59,9 @@ public class AggiungiNotiziaController {
     @Autowired
     private HttpSession session;
     @Autowired
-    private WebAdmin webAdmin;
+    WebAdmin webAdmin;
+    @Autowired
+    CreateTables createTables;
     //private static final String imagesPath = "C://XML//";
     private String imagesPath;
 
@@ -74,12 +76,13 @@ public class AggiungiNotiziaController {
         System.out.println("***********************************" + idNotizia);
         if (idNotizia == false) {
             return new ModelAndView("redirect:/aggiungi-notizia/");
-         } else {
+        } else {
             session.setAttribute("idNotizia", false);
         }
         notizia.setNome(mfu.getNome());
         notizia.setArticolo(mfu.getArticolo());
         notizia.setTipo(mfu.getTipo());
+        notizia.setPriorita(mfu.getPriorita());
         notizia.setDataCaricamento(new Timestamp(new java.util.Date().getTime()));
 
         //Notizia notizia = new Notizia(mfu.getNome(), mfu.getArticolo(), mfu.getTipo(), );
@@ -125,6 +128,7 @@ public class AggiungiNotiziaController {
         if (!webAdmin.isValid()) {
             loginController.redirectLogin();
         }
+        System.out.println(webAdmin.toString());
 
         //per prevenire che la stessa notizia venga salvata piu di una volta al click del refresh del browser
         session.setAttribute("idNotizia", true);
@@ -141,6 +145,39 @@ public class AggiungiNotiziaController {
         return "redirect:aggiungi-notizia/";
     }
 
+    /**
+     * ****************************************
+     */
+    @RequestMapping(value = {"area-privata/"}, method = {RequestMethod.GET, RequestMethod.POST})
+    public ModelAndView areaP() {
+
+        System.out.println(webAdmin.toString());
+        if (!webAdmin.isValid()) {
+            System.out.println("Not valid");
+            return new ModelAndView("redirect:/login/");
+        }
+        ModelAndView mav = new ModelAndView("area_privata");
+        return mav;
+    }
+
+    @RequestMapping(value = {"area-p"}, method = {RequestMethod.GET})
+    public String redirectAreaP() {
+        return "redirect:area-p/";
+    }
+
+    @RequestMapping(value = {"create-tables/"}, method = {RequestMethod.GET, RequestMethod.POST})
+    public String createTables() {
+        if (!webAdmin.isValid()) {
+            System.out.println("Not valid");
+            return "redirect:/login/";
+        }
+        createTables.createTables();
+        return "redirect:/area-privata/";
+    }
+
+    /**
+     * ********************************************
+     */
     @PostConstruct
     public void Init() {
         log = LogFactory.getLog(AggiungiNotiziaController.class);

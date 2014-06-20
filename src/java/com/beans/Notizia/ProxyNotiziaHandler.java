@@ -23,6 +23,7 @@ public class ProxyNotiziaHandler extends NotiziaHandler{
     protected ArrayList<Notizia> notiziaCucina;
     protected ArrayList<Notizia> notiziaDecorazioni;
     protected ArrayList<Notizia> notiziaCondominio;
+    protected ArrayList<Notizia> notiziaPosaPavimento;
 
     public ProxyNotiziaHandler() {
         this.notiziaPopulare = null;
@@ -34,6 +35,7 @@ public class ProxyNotiziaHandler extends NotiziaHandler{
         this.notiziaCucina = null;
         this.notiziaDecorazioni = null;
         this.notiziaCondominio = null;
+        this.notiziaPosaPavimento = null;
         super.dirty = false;
         realHandler = new RealNotiziaHandler();
     }
@@ -132,5 +134,16 @@ public class ProxyNotiziaHandler extends NotiziaHandler{
         return notiziaCondominio;
     }
 
-    
+    @Override
+    public ArrayList<Notizia> getNotiziaPosaPavimenti() {
+        if (this.notiziaPosaPavimento == null || dirty) {
+            System.out.println("Sto accedendo al DB");
+            notiziaPosaPavimento = realHandler.getNotiziaPosaPavimenti();
+            dirty = false;
+        } else {
+            System.out.println("Sto carricando notizia dal proxy");
+        }
+        return notiziaPosaPavimento;
+    }
+
 }
