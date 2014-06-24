@@ -25,6 +25,7 @@ public class ProxyNotiziaHandler extends NotiziaHandler {
     protected ArrayList<Notizia> notiziaCondominio;
     protected ArrayList<Notizia> notiziaPosaPavimento;
     protected ArrayList<Notizia> notiziaAll;
+    protected Notizia notizia;
 
     public ProxyNotiziaHandler() {
         this.notiziaPopulare = null;
@@ -38,6 +39,7 @@ public class ProxyNotiziaHandler extends NotiziaHandler {
         this.notiziaCondominio = null;
         this.notiziaPosaPavimento = null;
         this.notiziaAll = null;
+        this.notizia = null;
         super.dirty = false;
         realHandler = new RealNotiziaHandler();
     }
@@ -159,6 +161,18 @@ public class ProxyNotiziaHandler extends NotiziaHandler {
         }
         return notiziaAll;
 
+    }
+
+    @Override
+    public Notizia loadNotizia(int id) {
+        if (this.notizia == null || dirty) {
+            System.out.println("Sto accedendo al DB");
+            notizia = realHandler.loadNotizia(id);
+            dirty = false;
+        } else {
+            System.out.println("Sto carricando notizia dal proxy");
+        }
+        return notizia;
     }
 
 }

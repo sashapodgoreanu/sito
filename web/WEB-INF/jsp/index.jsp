@@ -62,6 +62,19 @@
                 <div class="col-md-2">  
                 </div>
             </div>
+            <div id="fb-root">
+
+            </div>
+            <script>(function(d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id))
+                        return;
+                    js = d.createElement(s);
+                    js.id = id;
+                    js.src = "//connect.facebook.net/it_IT/sdk.js#xfbml=1&version=v2.0";
+                    fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
+            </script>
             <div class="row applybackground_grey">
                 <div class="col-md-1"></div>
                 <!-- Panelli Notizia-->
@@ -71,7 +84,7 @@
                             <div class="col-md-12">
                                 <article class="panel panel-default margin-20-top">
                                     <!--Titolo-->
-                                    <section class="panel-heading"><h3>${notizia.nome}</h3></section>
+                                    <section class="panel-heading"><h3><a href="${pageContext.request.getContextPath()}/articolo/${notizia.tipo}/${notizia.id}/">${notizia.nome}</a></h3></section>
                                     <!--Immagini-->
                                     <div class="panel-body">
                                         <div class="fotorama"

@@ -44,7 +44,7 @@ public class RobotsController {
     public String getRobots() {
         List<Tupla> lista = null;
         try {
-            lista = url.getFields();
+            lista = url.getURLs();
         } catch (Exception ex) {
             Logger.getLogger(RobotsController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -54,6 +54,7 @@ public class RobotsController {
         sb.append("Disallow: /aggiungi-notizia/*\n");
         sb.append("Disallow: /endpointdoc\n");
         sb.append("Disallow: /login/*\n");
+        sb.append("Disallow: /area-privata/*\n");
         for (Tupla arrayList : lista) {
             sb.append("Allow: /").append(arrayList.url()).append("\n");
             sb.append("Allow: /").append(arrayList.url()).append("/\n");

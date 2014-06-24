@@ -20,21 +20,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "url")
 public class XmlUrl {
 
-    public enum Priority {
-
-        HIGH("1.0"), MEDIUM("0.5"), LOW("0.1");
-
-        private String value;
-
-        Priority(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-    }
-
     @XmlElement
     private String loc;
 

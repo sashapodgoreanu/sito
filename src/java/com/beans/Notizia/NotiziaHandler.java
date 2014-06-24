@@ -39,6 +39,8 @@ public abstract class NotiziaHandler implements Observer {
 
     public abstract ArrayList<Notizia> getNotiziaAll();
 
+    public abstract Notizia loadNotizia(int id);
+
     public boolean isDirty() {
         return dirty;
     }

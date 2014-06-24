@@ -3,7 +3,6 @@
     Created on : 30-apr-2014, 22.42.52
     Author     : Sasha Alexandru Podgoreanu
 --%>
-
 <!-- footer sus-->
 <div class="applybackground_footer container-fluid">
     <div class = "row margin-20-top">
@@ -53,7 +52,7 @@
             </div>
             <div>
                 <h4 class="header">Resta in contatto</h4>
-                <div class="margin-30-top">
+                <div class="margin-30-top margin-20-bottom">
                     <a href="http://www.facebook.com/damiciistrutturazioni" class="btn btn-social-icon btn-facebook">
                         <i class="fa fa-facebook"></i>
                     </a>
@@ -61,13 +60,9 @@
                         <i class="fa fa-google-plus"></i>
                     </a>
                 </div>
-
             </div>
-
-
         </div>
         <div class = "col-md-1">
-
         </div>
     </div>
 </div>

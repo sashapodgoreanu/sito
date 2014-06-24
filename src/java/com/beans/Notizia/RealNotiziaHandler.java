@@ -193,4 +193,22 @@ public class RealNotiziaHandler extends NotiziaHandler {
         ArrayList<Notizia> notizia = getNotizia(query);
         return notizia;
     }
+
+    @Override
+    public Notizia loadNotizia(int id) {
+        String query = "SELECT * FROM NOTIZIA WHERE ID =" + id;
+        QueryResult qr = null;
+        Notizia notizia = null;
+        try {
+            qr = db.executeQuery(query);
+            while (qr.next()) {
+                notizia = new Notizia(qr.getInt("ID"), qr.getString("NOME"), qr.getString("ARTICOLO"), qr.getString("TIPO"), qr.getInt("PRIORITA"), qr.getDate("DATA_CARICAMENTO"));
+            }
+        } catch (SQLException ex) {
+            LOG.severe(ex.getMessage());
+        } catch (Exception ex) {
+            LOG.severe(ex.getMessage());
+        }
+        return notizia;
+    }
 }

@@ -21,6 +21,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -43,13 +44,22 @@ public class PageController {
     public void createWebAdminSession(HttpSession session) {
         WebAdmin webAdminSession = (WebAdmin) session.getAttribute("webAdminSession");
         session.setAttribute("webAdminSession", webAdminSession);
-        System.out.println(webAdminSession);
+        System.out.println("createWebAdminSession");
     }
 
     @RequestMapping(value = {"index/"}, method = RequestMethod.GET)
     public ModelAndView wellcome() {
         ModelAndView mav = new ModelAndView("index");//add view - index.jsp
         mav.addObject("notizia", notiziaHandler.getNotiziaHome());
+        return mav;
+    }
+
+//Gestisce tutti i articoli
+    @RequestMapping(value = {"articolo/{notizia}/{id}/"}, method = RequestMethod.GET)
+    public ModelAndView gestisciArticoli(@PathVariable int id) {
+        ModelAndView mav = new ModelAndView("articolo");//add view - index.jsp
+        //System.out.println(notiziaHandler.loadNotizia(id).toString());
+        mav.addObject("notizia", notiziaHandler.loadNotizia(id));
         return mav;
     }
 
@@ -70,9 +80,9 @@ public class PageController {
     }
 
     /**
-     * **************************Servizi offerti********************************
+     * **************************Servizi
+     * offerti********************************
      */
-
     @RequestMapping(value = {"posa-pavimenti/"}, method = RequestMethod.GET)
     public ModelAndView posaPavimenti() {
         ModelAndView mav = new ModelAndView("posa_pavimenti");//add view - noteLegali.jsp
@@ -117,6 +127,7 @@ public class PageController {
     public String resolveException2() {
         return "errors/500";
     }
+
     @RequestMapping(value = "/not-supported-method.html")
     public String resolveException3() {
         return "errors/405";

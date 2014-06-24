@@ -12,7 +12,13 @@ package com.controller.SEOUtil;
  */
 public class Tupla extends Triplet {
 
-    public Tupla(Object a, Object b, Object c) {
+    /**
+     *
+     * @param a valore URL
+     * @param b data ultima modifica
+     * @param c priorita de tipo
+     */
+    public Tupla(String a, String b, Priority c) {
         super(a, b, c);
     }
 
@@ -24,8 +30,8 @@ public class Tupla extends Triplet {
         return (String) super.getSecond();
     }
 
-    public String priorita() {
-        return (String) super.getThird();
+    public Priority priorita() {
+        return (Priority) super.getThird();
     }
 
 }
