@@ -70,13 +70,13 @@
                                     </sf:form>
                                 </c:when>
                                 <c:otherwise>
-                                    <form:form action="logout"> 
+                                    <form:form action="logout">
                                         <div class="row">
                                             <p  class="col-sm-8 control-label">Sei logato come ${webAdminSession.nome}. Vuoi uscire?</p>
                                             <div class=" col-sm-4">
                                                 <button id="esci" type="submit" class="btn btn-default">Esci</button>
                                             </div>
-                                        </div> 
+                                        </div>
                                     </form:form>
                                 </c:otherwise>
                             </c:choose>

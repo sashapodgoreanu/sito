@@ -5,13 +5,16 @@
  */
 package com.controller;
 
+import com.beans.Notizia.NotiziaHandler;
 import com.beans.WebAdmin;
 import com.beans.WebAdminValidator;
+import com.service.CreateTables;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -34,6 +37,11 @@ public class LoginController {
     WebAdminValidator webAdminValidator;
     @Autowired
     private WebAdmin webAdmin;
+    @Autowired
+    CreateTables createTables;
+    @Autowired
+    @Qualifier("proxy")
+    NotiziaHandler notiziaHandler;
 
     @RequestMapping(value = {"login/"}, method = RequestMethod.GET)
     public ModelAndView login() {
@@ -47,15 +55,14 @@ public class LoginController {
     @RequestMapping(value = {"login/enter"})
     public ModelAndView enter(@ModelAttribute("webAdminForm") WebAdmin webAdminForm,
             BindingResult bindingResult, HttpServletRequest request) {
-        ModelAndView mav = new ModelAndView("login");
+        //ModelAndView mav = new ModelAndView("area_privata");
         webAdmin.setLogin(webAdminForm.getLogin());
         webAdmin.setPassword(webAdminForm.getPassword());
         webAdmin.authenticate();
         webAdminValidator.validate(webAdmin, bindingResult);
-
         //Guarda login()
         session.setAttribute("webAdminSession", webAdmin);
-        return mav;
+        return areaPrivata();
     }
 
     @RequestMapping(value = {"login/logout"})
@@ -71,5 +78,36 @@ public class LoginController {
     public String redirectLogin() {
         return "redirect:login/";
     }
+
+    /**
+     * ****************************************
+     */
+    @RequestMapping(value = {"area-privata/"}, method = {RequestMethod.GET, RequestMethod.POST})
+    public ModelAndView areaPrivata() {
+
+        System.out.println(webAdmin.toString());
+        if (!webAdmin.isValid()) {
+            System.out.println("Not valid");
+            return new ModelAndView("redirect:/login/");
+        }
+        ModelAndView mav = new ModelAndView("area_privata");
+        mav.addObject("notizia", notiziaHandler.getNotiziaAll());
+
+        return mav;
+    }
+
+    @RequestMapping(value = {"create-tables/"}, method = {RequestMethod.GET, RequestMethod.POST})
+    public String createTables() {
+        if (!webAdmin.isValid()) {
+            System.out.println("Not valid");
+            return "redirect:/login/";
+        }
+        createTables.createTables();
+        return "redirect:/area-privata/";
+    }
+
+    /**
+     * ********************************************
+     */
     
 }

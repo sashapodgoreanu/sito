@@ -10,6 +10,8 @@
 <meta name="author" content="Damici Sorin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Damici Ristrutturazioni</title>
+
+<link rel="icon" href="${pageContext.request.getContextPath()}/immagini/favicon.png" type="image/png" />
 <!-- Style -->
 <link href="${pageContext.request.getContextPath()}/css/stile.css" rel="stylesheet"> <!-- 1 KB -->
 <!-- Link to jQuery -->       
@@ -17,6 +19,8 @@
 <script>!window.jQuery && document.write('<script src="${pageContext.request.getContextPath()}/js/jquery-1.11.0.min"><\/script>');</script>
 <!-- Bootstrap -->
 <link href="${pageContext.request.getContextPath()}/css/bootstrap.min.css" rel="stylesheet"> <!-- 120 KB -->
+<link href="${pageContext.request.getContextPath()}/css/bootstrap-social.css" rel="stylesheet"> <!-- 1 KB -->
+<link href="${pageContext.request.getContextPath()}/css/font-awesome.css" rel="stylesheet"> <!-- 25 KB -->
 <!-- Bootstrap plugins -->
 <script src="${pageContext.request.getContextPath()}/js/bootstrap.min.js"></script> <!-- 28 KB -->
 <script src="${pageContext.request.getContextPath()}/js/tooltip.js"></script> <!-- 28 KB -->

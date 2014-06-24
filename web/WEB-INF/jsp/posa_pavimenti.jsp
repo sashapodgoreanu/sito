@@ -122,8 +122,10 @@
                     </div>
                 </div>
             </div>
+            <c:import url="template/read-more-script.jsp"/>
         </article>
-
-                            <c:import url="template/read-more-script.jsp"/>
+        <footer>
+            <c:import url="template/footbar.jsp"/>
+        </footer>               
     </body>
 </html>

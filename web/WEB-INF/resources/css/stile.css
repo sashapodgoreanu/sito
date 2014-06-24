@@ -35,8 +35,14 @@ header{
     background-image: url(../immagini/bg_body.jpg);
 }
 .applybackground_dark{
-    background-image: url(../immagini/bg.jpg);
+    background-image: url(../immagini/bg_footer2.fw.png);
+}
 
+.applybackground_footer{
+    background-image: url(../immagini/bg_footer.png);
+}
+footer{
+    color: #999;
 }
 
 .navbar{
@@ -71,6 +77,9 @@ li.social a {
 .margin-20-top{
     margin-top: 20px;
 }
+.margin-30-top{
+    margin-top: 30px;
+}
 .margin-40-top{
     margin-top: 40px;
 }
@@ -82,6 +91,22 @@ li.social a {
 }
 .margin-6-top{
     margin-top: 6px;
+}
+
+.margin-20-bottom{
+    margin-bottom: 20px;
+}
+.margin-40-bottom{
+    margin-bottom: 40px;
+}
+.margin-15-bottom{
+    margin-bottom: 15px;
+}
+.margin-10-bottom{
+    margin-bottom: 10px;
+}
+.margin-6-bottom{
+    margin-bottom: 6px;
 }
 
 .margin-20-left{
@@ -138,4 +163,36 @@ li.social a {
     color: #ff0000;
     font-style: italic;
     font-weight: bold;
+}
+
+footer ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+footer li:before {
+    content: "\e080";
+    font-size: 8px;
+}
+
+footer h4.header::after {
+    background-color: #999;
+    content: "";
+    display: block;
+    height: 1px;
+    position: relative;
+    width: 50px;
+    top: 12px;
+}
+footer a{
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #999;
+
+}
+
+footer a:hover{
+    color: #e1e1e1;
+
 }

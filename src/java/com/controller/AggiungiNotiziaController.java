@@ -11,7 +11,6 @@ import com.beans.Notizia.NotiziaMultifileUpload;
 import com.beans.Notizia.Priorita;
 import com.beans.Notizia.Tipo;
 import com.beans.WebAdmin;
-import com.service.CreateTables;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -60,8 +59,6 @@ public class AggiungiNotiziaController {
     private HttpSession session;
     @Autowired
     WebAdmin webAdmin;
-    @Autowired
-    CreateTables createTables;
     //private static final String imagesPath = "C://XML//";
     private String imagesPath;
 
@@ -145,39 +142,6 @@ public class AggiungiNotiziaController {
         return "redirect:aggiungi-notizia/";
     }
 
-    /**
-     * ****************************************
-     */
-    @RequestMapping(value = {"area-privata/"}, method = {RequestMethod.GET, RequestMethod.POST})
-    public ModelAndView areaP() {
-
-        System.out.println(webAdmin.toString());
-        if (!webAdmin.isValid()) {
-            System.out.println("Not valid");
-            return new ModelAndView("redirect:/login/");
-        }
-        ModelAndView mav = new ModelAndView("area_privata");
-        return mav;
-    }
-
-    @RequestMapping(value = {"area-p"}, method = {RequestMethod.GET})
-    public String redirectAreaP() {
-        return "redirect:area-p/";
-    }
-
-    @RequestMapping(value = {"create-tables/"}, method = {RequestMethod.GET, RequestMethod.POST})
-    public String createTables() {
-        if (!webAdmin.isValid()) {
-            System.out.println("Not valid");
-            return "redirect:/login/";
-        }
-        createTables.createTables();
-        return "redirect:/area-privata/";
-    }
-
-    /**
-     * ********************************************
-     */
     @PostConstruct
     public void Init() {
         log = LogFactory.getLog(AggiungiNotiziaController.class);

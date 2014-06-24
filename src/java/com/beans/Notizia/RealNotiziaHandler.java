@@ -47,7 +47,7 @@ public class RealNotiziaHandler extends NotiziaHandler {
         try {
             qr = db.executeQuery(query);
             while (qr.next()) {
-                Notizia toAdd = new Notizia(qr.getString("NOME"), qr.getString("ARTICOLO"), qr.getString("TIPO"), qr.getInt("PRIORITA"), qr.getDate("DATA_CARICAMENTO"));
+                Notizia toAdd = new Notizia(qr.getInt("ID"), qr.getString("NOME"), qr.getString("ARTICOLO"), qr.getString("TIPO"), qr.getInt("PRIORITA"), qr.getDate("DATA_CARICAMENTO"));
                 notizia.add(toAdd);
             }
         } catch (SQLException ex) {
@@ -184,6 +184,13 @@ public class RealNotiziaHandler extends NotiziaHandler {
         String query = "SELECT * FROM NOTIZIA WHERE TIPO ='" + Tipo.POSA_PAVIMENTI + "'";
         ArrayList<Notizia> notizia = getNotizia(query);
         Collections.sort(notizia, new NotiziaConPrioritaComparator());
+        return notizia;
+    }
+
+    @Override
+    public ArrayList<Notizia> getNotiziaAll() {
+        String query = "SELECT * FROM NOTIZIA";
+        ArrayList<Notizia> notizia = getNotizia(query);
         return notizia;
     }
 }

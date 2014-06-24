@@ -20,10 +20,10 @@
         <header itemscope itemtype="http://schema.org/WPHeader">
             <c:import url="template/menu-nav.jsp"/>
         </header>
-            <article class="container-fluid">
-                <div class ="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-5">
+        <article class="container-fluid">
+            <div class ="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-5">
                     <div class ="row">
                         <div class="col-md-12" itemscope itemtype="http://schema.org/WebPageElement">
                             <div class="page-header" >
@@ -97,6 +97,9 @@
                 </div>
             </div>
         </article>
-        <c:import url="template/read-more-script.jsp"/>
+                            <footer>
+                                <c:import url="template/footbar.jsp"/>
+        </footer>
+
     </body>
 </html>

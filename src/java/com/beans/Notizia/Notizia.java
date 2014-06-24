@@ -5,7 +5,6 @@
  */
 package com.beans.Notizia;
 
-import com.beans.Notizia.NotiziaHandler;
 import com.service.DBController;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -52,6 +51,16 @@ public class Notizia extends Observable {
     }
 
     public Notizia(String nome, String testo, String tipo, int priorita, Date dataCaricamento) {
+        this.nome = nome;
+        this.articolo = testo;
+        this.tipo = tipo;
+        this.priorita = priorita;
+        this.dataCaricamento = dataCaricamento;
+        immagini = new ArrayList<>();
+    }
+
+    public Notizia(int id, String nome, String testo, String tipo, int priorita, Date dataCaricamento) {
+        this.id = id;
         this.nome = nome;
         this.articolo = testo;
         this.tipo = tipo;

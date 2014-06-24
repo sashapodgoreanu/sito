@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * @author SashaAlexandru
  */
 @Component(value = "proxy")
-public class ProxyNotiziaHandler extends NotiziaHandler{
+public class ProxyNotiziaHandler extends NotiziaHandler {
 
     private final RealNotiziaHandler realHandler;
     protected ArrayList<Notizia> notiziaPopulare;
@@ -24,6 +24,7 @@ public class ProxyNotiziaHandler extends NotiziaHandler{
     protected ArrayList<Notizia> notiziaDecorazioni;
     protected ArrayList<Notizia> notiziaCondominio;
     protected ArrayList<Notizia> notiziaPosaPavimento;
+    protected ArrayList<Notizia> notiziaAll;
 
     public ProxyNotiziaHandler() {
         this.notiziaPopulare = null;
@@ -36,6 +37,7 @@ public class ProxyNotiziaHandler extends NotiziaHandler{
         this.notiziaDecorazioni = null;
         this.notiziaCondominio = null;
         this.notiziaPosaPavimento = null;
+        this.notiziaAll = null;
         super.dirty = false;
         realHandler = new RealNotiziaHandler();
     }
@@ -144,6 +146,19 @@ public class ProxyNotiziaHandler extends NotiziaHandler{
             System.out.println("Sto carricando notizia dal proxy");
         }
         return notiziaPosaPavimento;
+    }
+
+    @Override
+    public ArrayList<Notizia> getNotiziaAll() {
+        if (this.notiziaAll == null || dirty) {
+            System.out.println("Sto accedendo al DB");
+            notiziaAll = realHandler.getNotiziaAll();
+            dirty = false;
+        } else {
+            System.out.println("Sto carricando notizia dal proxy");
+        }
+        return notiziaAll;
+
     }
 
 }
