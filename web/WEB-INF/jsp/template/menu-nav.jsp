@@ -6,6 +6,19 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<div id="fb-root">
+
+</div>
+<script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id))
+            return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/it_IT/sdk.js#xfbml=1&version=v2.0";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
 <nav class="navbar navbar-default" role="navigation" >
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -23,7 +36,7 @@
             <ul class="nav navbar-nav">
                 <li
                     <c:choose>
-                        <c:when test = "${fn:startsWith(pageContext.request.getAttribute('javax.servlet.forward.request_uri'), '/damici/index/')}">
+                        <c:when test = "${fn:startsWith(pageContext.request.getAttribute('javax.servlet.forward.request_uri'), '/index/')}">
                             class="active"
                         </c:when>
                     </c:choose>
@@ -31,7 +44,7 @@
                 </li>
                 <li
                     <c:choose>
-                        <c:when test = "${fn:startsWith(pageContext.request.getAttribute('javax.servlet.forward.request_uri'), '/damici/azienda/')}">
+                        <c:when test = "${fn:startsWith(pageContext.request.getAttribute('javax.servlet.forward.request_uri'), '/azienda/')}">
                             class="active"
                         </c:when>
                     </c:choose>
@@ -54,7 +67,7 @@
                 <li><a href="#">Testimonianze</a></li>
                 <li
                     <c:choose>
-                        <c:when test = "${fn:startsWith(pageContext.request.getAttribute('javax.servlet.forward.request_uri'), '/damici/contatti/')}">
+                        <c:when test = "${fn:startsWith(pageContext.request.getAttribute('javax.servlet.forward.request_uri'), '/contatti/')}">
                             class="active"
                         </c:when>
                     </c:choose>
@@ -79,15 +92,15 @@
                             <c:choose>
                                 <c:when test = "${webAdminSession.valid == true}">
                                 <li><a href="${pageContext.request.getContextPath()}/login/">Logout</a></li>
-                            </c:when>
+                                </c:when>
                                 <c:otherwise>
                                 <li><a href="${pageContext.request.getContextPath()}/login/">Login</a></li>
                                 </c:otherwise>
                             </c:choose>
                                     <c:if test = "${webAdminSession.valid == true}">
                                     <li class="divider"></li>
-                            <li><a href="${pageContext.request.getContextPath()}/aggiungi-notizia/">Aggiungi Notizia</a></li>
-                        </c:if>
+                                    <li><a href="${pageContext.request.getContextPath()}/aggiungi-notizia/">Aggiungi Notizia</a></li>
+                                </c:if>
                     </ul>
                 </li>
             </ul>

@@ -83,7 +83,7 @@
                                         <span itemprop="addressLocality">Torino</span>
                                         (<span itemprop="addressRegion">TO</span>)<br>
                                         <span itemprop="telephone"><abbr title="Cellulare">Tel:</abbr> 328 586 4500</span><br>
-                                        <span itemprop="email"><a href="mailto:damiciristrutturazioni@gmail.com,damicisorin@ymail.com"> damiciristrutturazioni@gmail.com</a></span>
+                                        <span itemprop="email"><a href="mailto:damiciristrutturazioni@gmail.com, damicisorin@ymail.com"> damiciristrutturazioni@gmail.com</a></span>
                                     </span>
                                 </address>
                             </div>

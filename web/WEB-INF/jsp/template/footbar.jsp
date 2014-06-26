@@ -60,6 +60,7 @@
                         <i class="fa fa-google-plus"></i>
                     </a>
                 </div>
+                <div class="fb-like-box" data-href="https://www.facebook.com/damiciistrutturazioni" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false"></div>
             </div>
         </div>
         <div class = "col-md-1">

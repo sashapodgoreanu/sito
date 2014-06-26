@@ -12,14 +12,9 @@
 <html lang="it">
     <head>
         <c:import url="template/head.jsp"/>
-        <script>
-            $(document).ready(function() {
-                $(".underconstruction").trigger('click');
-            });
-        </script>
     </head>
     <body>
-        <header class="applybackground_grey">
+        <header class="row applybackground_cuadritini2">
             <c:import url="template/menu-nav.jsp"/>
             <!-- Fotorama SlideShow: Add images to <div class="fotorama"></div>. -->
             <div class ="container-fluid">
@@ -33,7 +28,7 @@
                              data-autoplay="true"
                              data-loop="true"
                              data-width="100%"
-                             data-height="60%"               
+                             data-height="50%"
                              data-direction="ltr">   <!-- Photos article text direction -->
                             <img src="${pageContext.request.getContextPath()}/immagini/fotorama/cada.jpg"/>
                             <img src="${pageContext.request.getContextPath()}/immagini/test/2w.jpg" />
@@ -46,7 +41,7 @@
             </div>
         </header>
         <article class="container-fluid">
-            <div class="row applybackground_grey">
+            <div class="row applybackground_cuadritini2">
                 <div class="col-md-2">
                 </div>
                 <div class="col-md-8">
@@ -62,19 +57,54 @@
                 <div class="col-md-2">  
                 </div>
             </div>
-            <div id="fb-root">
+
+
+
+            <div class="row applybackground_cuadritini">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="text-center lead headerArticle">
+                            I nostri Servizi
+                        </h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-1">
+                    </div>
+                    <div class="col-md-3">
+                        <div class="grid cs-style-5">
+                            <figure>
+                                <img style="display: block; margin-left: auto; margin-right: auto;" src="${pageContext.request.getContextPath()}/immagini/sicurezza.png" alt="Sicurezza">
+                                <figcaption>
+                                    <h3>SAFETY</h3>
+                                    <p><i style="" class="icon-medkit "></i> Pensiamo alla tua sicurezza rispetto agli agenti
+                                        esterni/casuali con sistemi anticaduta, antincendio, adeguamenti
+                                        antisismici e alla difesa idraulica domestica.
+                                    </p>
+                                    <span class="clear"></span>
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="grid cs-style-5">
+                            <figure><img style="display: block; margin-left: auto; margin-right: auto;" src="${pageContext.request.getContextPath()}/immagini/sustainability.png" alt="Sostenibilità">
+                                <figcaption>
+                                    <h3>SUSTAINABILITY</h3>
+                                    <p><i style="" class="icon-leaf "></i> Ti aiutiamo con le pratiche per le certificazioni energetiche, detrazioni fiscali e a valutare economicamente i
+                                        tuoi investimenti.</p>
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-1">
+                    </div>
+                </div>
 
             </div>
-            <script>(function(d, s, id) {
-                    var js, fjs = d.getElementsByTagName(s)[0];
-                    if (d.getElementById(id))
-                        return;
-                    js = d.createElement(s);
-                    js.id = id;
-                    js.src = "//connect.facebook.net/it_IT/sdk.js#xfbml=1&version=v2.0";
-                    fjs.parentNode.insertBefore(js, fjs);
-                }(document, 'script', 'facebook-jssdk'));
-            </script>
             <div class="row applybackground_grey">
                 <div class="col-md-1"></div>
                 <!-- Panelli Notizia-->
@@ -82,7 +112,7 @@
                     <c:forEach items="${notizia}" var = "notizia">
                         <div class="row">
                             <div class="col-md-12">
-                                <article class="panel panel-default margin-20-top">
+                                <article id="articolo_${notizia.id}" class="panel panel-default margin-20-top">
                                     <!--Titolo-->
                                     <section class="panel-heading"><h3><a href="${pageContext.request.getContextPath()}/articolo/${notizia.tipo}/${notizia.id}/">${notizia.nome}</a></h3></section>
                                     <!--Immagini-->
@@ -100,6 +130,7 @@
                                     <!--Articolo-->
                                     <section class="panel-body leggitutto">
                                         ${notizia.testo}
+                                        <div class="fb-share-button" data-href="http://www.damicicostruzioni.it/articolo/${notizia.tipo}/${notizia.id}/" data-type="button_count"></div>
                                     </section>
                                 </article>
                             </div>
@@ -123,9 +154,9 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12 applybackground">
-                    Level 1: .col-md-9
+                                <div class="row applybackground_cuadritini2">
+                                    <div class="col-md-12 applybackground">
+                                        Level 1: .col-md-9
                     <div class="row">
                         <div class="col-md-6">
                             Level 2: .col-md-6
@@ -133,16 +164,6 @@
                         <div class="col-md-6">
                             Level 2: .col-md-6
                         </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Small modal -->
-            <button class="btn btn-primary underconstruction" data-toggle="modal" data-target=".bs-example-modal-sm"></button>
-
-            <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-sm">
-                    <div class="modal-content">
-                        <p class = "lead text-center margin-20-top">Il Sito è In Costruzione</p>
                     </div>
                 </div>
             </div>

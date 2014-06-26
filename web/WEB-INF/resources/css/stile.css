@@ -41,6 +41,14 @@ header{
 .applybackground_footer{
     background-image: url(../immagini/bg_footer.png);
 }
+
+.applybackground_cuadritini{
+    background-image: url(../immagini/cuadritini.png);
+}
+
+.applybackground_cuadritini2{
+    background-image: url(../immagini/bg-grid.png);
+}
 footer{
     color: #999;
 }
@@ -184,6 +192,17 @@ footer h4.header::after {
     width: 50px;
     top: 12px;
 }
+
+h3.headerArticle::after {
+    margin: -1px auto;
+    background-color: #fe6a00;
+    content: "";
+    display: block;
+    height: 1px;
+    position: relative;
+    width: 50px;
+    top: 12px;
+}
 footer a{
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 14px;
@@ -196,3 +215,91 @@ footer a:hover{
     color: #e1e1e1;
 
 }
+
+
+/*****esperimentali***/
+.grid {
+    padding: 5px;
+    margin: 0 auto;
+    list-style: none;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.grid figure {
+    margin: 0;
+    position: relative;
+}
+
+.grid figure img {
+    max-width: 100%;
+    display: block;
+    position: relative;
+}
+
+.grid figcaption {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 5px;
+    background: #8c8c8c;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.grid figcaption h3 {
+    padding: 10px;
+    color: #fff;
+}
+
+.grid figcaption p {
+    position: relative;
+    text-align: center;
+    color: #fff;
+}
+
+.cs-style-5 figure img {
+    -webkit-transition: -webkit-transform 0.4s;
+    -moz-transition: -moz-transform 0.4s;
+    transition: transform 0.4s;
+}
+
+.cs-style-5 figure:hover img,
+.cs-style-5 figure.cs-hover img {
+    -webkit-transform: scale(0.4);
+    -moz-transform: scale(0.4);
+    -ms-transform: scale(0.4);
+    transform: scale(0.4);
+}
+
+.cs-style-5 figcaption {
+    //height: 100%;
+    width: 100%;
+    opacity: 0;
+    -webkit-transform: scale(0.7);
+    -moz-transform: scale(0.7);
+    -ms-transform: scale(0.7);
+    transform: scale(0.7);
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transition: -webkit-transform 0.4s, opacity 0.4s;
+    -moz-transition: -moz-transform 0.4s, opacity 0.4s;
+    transition: transform 0.4s, opacity 0.4s;
+}
+
+.cs-style-5 figure:hover figcaption,
+.cs-style-5 figure.cs-hover figcaption {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+}
+
+.grid figcaption {
+  background-color: #54A3CF;
+}
+
+span.clear { clear: left; display: block; }
